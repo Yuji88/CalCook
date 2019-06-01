@@ -48,6 +48,7 @@ public class CookInfo extends HttpServlet {
 
 			// 料理選択画面遷移
 			request.getRequestDispatcher("CookSearch.jsp").forward(request, response);
+			return;
 
 		} else if (calculate != null){
 			// 未入力チェック
@@ -81,6 +82,7 @@ public class CookInfo extends HttpServlet {
 
 				// 未入力 自画面遷移
 				request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
+				return;
 			}
 
 			request.setAttribute("projectName", projectName);

@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -12,6 +13,7 @@
   <% String cookName = (String)request.getAttribute("cookName"); %>
   <% int member = (int)request.getAttribute("member"); %>
   <% String errMsg = (String)request.getAttribute("errMsg"); %>
+  <% ArrayList<String> projectnames = (ArrayList<String>)request.getAttribute("projectnames"); %>
 </head>
 
 <body>
@@ -41,12 +43,12 @@
             	out.write("<option value=\""+ projectName + "\" selected>" + projectName + "</optin>");
                 }
             %>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+<%--             <% for(int i = 0; i < projectnames.size(); i++){
+            	out.write("<option value=\"" + projectnames.get(i) + ">" + projectnames.get(i) + "</option>");
+            }
+            %> --%>
           </select>
         </p>
-
 
 	  <p>
 	    <label for="cookName">料理名</label>

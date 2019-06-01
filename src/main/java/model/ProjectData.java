@@ -3,6 +3,7 @@ package model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import data.Connect;
 import dto.ProjectInfo;
@@ -44,6 +45,40 @@ public class ProjectData {
 		return (id);
 	}
 
+	public ArrayList<String> ProjectNameselect() {
+		ArrayList<String> names = new ArrayList<>();
+
+		int resultCode = 0;
+		Statement stmt = null;
+
+		try {
+			resultCode = Connect.DBAccess();
+			stmt = Connect.getStmt();
+			if (resultCode != 0) {
+				System.out.println("データベースアクセスに失敗しました");
+				return (names);
+			}
+
+			// データ取得
+			String sql = "SELECT projectname FROM project;";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				names.add(rs.getString("projectname"));
+			}
+
+			resultCode = Connect.DBClose();
+			if (resultCode != 0) {
+				System.out.println("データベースクローズに失敗しました");
+				return (names);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (names);
+	}
+
 	public int ProjectInsert(ProjectInfo projectInfo) {
 		int resultCode = 0;
 		Statement stmt = null;
@@ -65,7 +100,7 @@ public class ProjectData {
 					+ "'" + projectInfo.getEnddate() + "');";
 
 			int insertRs = stmt.executeUpdate(sql);
-			if(insertRs != 1) {
+			if (insertRs != 1) {
 				resultCode = 20;
 				System.out.println("プロジェクト登録失敗しました");
 				return (resultCode);

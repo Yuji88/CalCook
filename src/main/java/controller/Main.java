@@ -1,11 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.ProjectData;
 
 /**
  * Servlet implementation class Main
@@ -27,14 +30,14 @@ public class Main extends HttpServlet {
 
 		String errmsg = "";
 		String view = request.getParameter("view");
-		System.out.println("view = " + view);
-
+//		System.out.println("view = " + view);
+System.out.println("1");
 		if(view.equals("home")) {
 
 			request.getRequestDispatcher("TopMenu.jsp").forward(request, response);
 
 		} else if (view.equals("CookInfoInput")){
-
+System.out.println("2");
 			String projectName = "";
 			String cookName = "";
 			int member = 0;
@@ -43,6 +46,18 @@ public class Main extends HttpServlet {
 			request.setAttribute("cookName", cookName);
 			request.setAttribute("member", member);
 			request.setAttribute("errMsg", errMsg);
+
+			ArrayList<String> projectnames = new ArrayList<>();
+			ProjectData projects = new ProjectData();
+			projectnames = projects.ProjectNameselect();
+
+			for(int i = 0; i < projectnames.size(); i++) {
+				System.out.println(projectnames.get(i));
+			}
+
+System.out.println("3");
+
+			request.setAttribute("projectnames", projectnames);
 
 			request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
 
@@ -55,6 +70,7 @@ public class Main extends HttpServlet {
 			request.setAttribute("startday", startday);
 			request.setAttribute("endday", endday);
 			request.setAttribute("errMsg", errMsg);
+
 			request.getRequestDispatcher("NewProject.jsp").forward(request, response);
 		}
 	}
