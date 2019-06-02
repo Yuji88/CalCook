@@ -1,11 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.ProjectData;
 
 /**
  * Servlet implementation class CookInfo
@@ -74,6 +77,12 @@ public class CookInfo extends HttpServlet {
 				}
 
 				errMsg = preErrMsg1 + preErrMsg2 + preErrMsg3 + "を入力してください";
+
+				ArrayList<String> projectnames = new ArrayList<>();
+				ProjectData projects = new ProjectData();
+				projectnames = projects.ProjectNameselect();
+
+				request.setAttribute("projectnames", projectnames);
 
 				request.setAttribute("projectName", projectName);
 				request.setAttribute("cookName", cookName);
