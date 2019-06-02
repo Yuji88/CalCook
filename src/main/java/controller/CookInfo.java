@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.MenuIngredientInfo;
 import model.ProjectData;
 
 /**
@@ -93,6 +94,8 @@ public class CookInfo extends HttpServlet {
 				request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
 				return;
 			}
+
+			MenuIngredientInfo menuIngredientInfo = new MenuIngredientInfo();
 
 			request.setAttribute("projectName", projectName);
 			request.setAttribute("cookName", cookName);
