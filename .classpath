@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="target/maven-archiver"/>
-	<classpathentry kind="src" path="src/main/webapp"/>
-	<classpathentry kind="src" path="target/m2e-wtp"/>
-	<classpathentry kind="src" path="target/maven-status"/>
-	<classpathentry kind="src" path="target/CalCook"/>
 	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="target/CalCook"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
