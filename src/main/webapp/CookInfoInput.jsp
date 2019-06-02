@@ -42,11 +42,10 @@
             	} else {
             	out.write("<option value=\""+ projectName + "\" selected>" + projectName + "</optin>");
                 }
-            %>
-<%--             <% for(int i = 0; i < projectnames.size(); i++){
-            	out.write("<option value=\"" + projectnames.get(i) + ">" + projectnames.get(i) + "</option>");
+            for(int i = 0; i < projectnames.size(); i++){
+            	out.write("<option value=\"" + projectnames.get(i) + "\">" + projectnames.get(i) + "</option>");
             }
-            %> --%>
+            %>
           </select>
         </p>
 

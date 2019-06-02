@@ -28,16 +28,14 @@ public class Main extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String errmsg = "";
 		String view = request.getParameter("view");
-//		System.out.println("view = " + view);
-System.out.println("1");
+		System.out.println("view = " + view);
 		if(view.equals("home")) {
 
 			request.getRequestDispatcher("TopMenu.jsp").forward(request, response);
 
 		} else if (view.equals("CookInfoInput")){
-System.out.println("2");
+
 			String projectName = "";
 			String cookName = "";
 			int member = 0;
@@ -50,12 +48,6 @@ System.out.println("2");
 			ArrayList<String> projectnames = new ArrayList<>();
 			ProjectData projects = new ProjectData();
 			projectnames = projects.ProjectNameselect();
-
-			for(int i = 0; i < projectnames.size(); i++) {
-				System.out.println(projectnames.get(i));
-			}
-
-System.out.println("3");
 
 			request.setAttribute("projectnames", projectnames);
 
