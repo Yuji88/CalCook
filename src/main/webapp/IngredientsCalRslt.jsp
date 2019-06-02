@@ -4,7 +4,6 @@
 <head>
   <link rel="stylesheet" href="header_footer.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <% String projectName = (String)request.getAttribute("projectName"); %>
   <% String cookName = (String)request.getAttribute("cookName"); %>
   <% int member = (int)request.getAttribute("member"); %>
