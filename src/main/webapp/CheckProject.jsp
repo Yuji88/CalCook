@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String projectname = (String)request.getAttribute("projectname"); %>
+<% int member = (int)request.getAttribute("member"); %>
+<% String startday = (String)request.getAttribute("startday"); %>
+<% String endday = (String)request.getAttribute("endday"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="header_footer.css">
   <meta charset="UTF-8">
-  <% String projectname = (String)request.getAttribute("projectname"); %>
-  <% int member = (int)request.getAttribute("member"); %>
-  <% String startday = (String)request.getAttribute("startday"); %>
-  <% String endday = (String)request.getAttribute("endday"); %>
   <title>登録プロジェクト確認画面</title>
 </head>
 <body>
