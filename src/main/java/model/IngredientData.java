@@ -22,7 +22,7 @@ public class IngredientData {
 				return (ingredientname);
 			}
 
-			String sql = "SELECT ingredientname FROM ingredient WHERE = " + ingredientid + ";";
+			String sql = "SELECT ingredientname FROM ingredient WHERE ingredientid = " + ingredientid + ";";
 			ResultSet rs = stmt.executeQuery(sql);
 
 			ingredientname = rs.getString(ingredientname);
@@ -48,7 +48,7 @@ public class IngredientData {
 				return (ingredientid);
 			}
 
-			String sql = "SELECT ingredientid FROM ingredient WHERE = " + ingredientname + ";";
+			String sql = "SELECT ingredientid FROM ingredient WHERE ingredientid = " + ingredientname + ";";
 			ResultSet rs = stmt.executeQuery(sql);
 
 			ingredientid = rs.getInt(ingredientid);

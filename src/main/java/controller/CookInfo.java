@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.MenuIngredientInfo;
+import model.MenuData;
+import model.MenuIngredientData;
 import model.ProjectData;
 
 /**
@@ -95,11 +97,16 @@ public class CookInfo extends HttpServlet {
 				return;
 			}
 
-			MenuIngredientInfo menuIngredientInfo = new MenuIngredientInfo();
+			ArrayList<MenuIngredientInfo> menuIngredientDataList = new ArrayList<>();
+			MenuIngredientData menuIngredientData = new MenuIngredientData();
+			MenuData menuData = new MenuData();
+			int menuid = menuData.MenuIdSelect(cookName);
+			menuIngredientDataList = menuIngredientData.EssMenuIngredientSelect(menuid);
 
 			request.setAttribute("projectName", projectName);
 			request.setAttribute("cookName", cookName);
 			request.setAttribute("member", member);
+			request.setAttribute("menuIngredientDataList", menuIngredientDataList);
 
 			// 計算画面遷移
 			request.getRequestDispatcher("IngredientsCalRslt.jsp").forward(request, response);
