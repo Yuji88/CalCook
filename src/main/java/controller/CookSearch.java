@@ -1,17 +1,27 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dto.IngredientDispInfo;
+import dto.IngredientInfo;
+import dto.MenuInfo;
+import model.MenuData;
+import model.MenuIngredientData;
+import model.ProjectData;
+import processing.IngredientProcDisp;
 
 /**
  * Servlet implementation class CookSearch
  */
 public class CookSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -24,8 +34,71 @@ public class CookSearch extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		request.setCharacterEncoding("UTF-8");
+
+		String cookName = request.getParameter("cookName");
+		String ingredientName = request.getParameter("ingredientName");
+		String decision = request.getParameter("decision");
+		String search = request.getParameter("search");
+
+		if(search != null) {
+			ArrayList<MenuInfo> menuInfoList = new ArrayList<>();
+			ArrayList<IngredientInfo> ingredientInfoList = new ArrayList<>();
+			ArrayList<IngredientDispInfo> ingredientDispInfoList = new ArrayList<>();
+			IngredientProcDisp ingredientProcDisp = new IngredientProcDisp();
+
+			// 全データ出力
+			if((cookName == null || cookName.equals("")) && (ingredientName == null || ingredientName.equals(""))) {
+				MenuData menudata = new MenuData();
+				menuInfoList = menudata.AllMenuSelect();
+
+				for(int i = 0; i < menuInfoList.size(); i++) {
+					ingredientDispInfoList.add(ingredientProcDisp.IngredientNameProc(menuInfoList.get(i)));
+				}
+
+			} else if((cookName != null && !(cookName.equals(""))) && (ingredientName != null && !(ingredientName.equals("")))) {
+				MenuIngredientData menuIngredientData = new MenuIngredientData();
+				menuInfoList = menuIngredientData.EssIngredientMenuSelect(cookName, ingredientName);
+System.out.println(menuInfoList.size());
+				for(int i = 0; i < menuInfoList.size(); i++) {
+					ingredientDispInfoList.add(ingredientProcDisp.IngredientNameProc(menuInfoList.get(i)));
+				}
+			} else if (cookName != null && !(cookName.equals(""))) {
+				MenuData menudata = new MenuData();
+				menuInfoList = menudata.MenuSelect(cookName);
+
+				for(int i = 0; i < menuInfoList.size(); i++) {
+					ingredientDispInfoList.add(ingredientProcDisp.IngredientNameProc(menuInfoList.get(i)));
+				}
+			} else if (ingredientName != null && !(ingredientName.equals(""))) {
+				MenuIngredientData menuIngredientData = new MenuIngredientData();
+				menuInfoList = menuIngredientData.EssIngredientMenuSelect(ingredientName);
+
+				for(int i = 0; i < menuInfoList.size(); i++) {
+					ingredientDispInfoList.add(ingredientProcDisp.IngredientNameProc(menuInfoList.get(i)));
+				}
+			}
+
+			request.setAttribute("ingredientDispInfoList", ingredientDispInfoList);
+			request.setAttribute("cookName", cookName);
+			request.setAttribute("ingredientName", ingredientName);
+
+			request.getRequestDispatcher("CookSearch.jsp").forward(request, response);
+			return;
+
+		} else if(decision != null) {
+			String errMsg = "";
+			ArrayList<String> projectnames = new ArrayList<>();
+			ProjectData projects = new ProjectData();
+			projectnames = projects.ProjectNameselect();
+
+			request.setAttribute("projectnames", projectnames);
+			request.setAttribute("cookName", cookName);
+			request.setAttribute("errMsg", errMsg);
+			request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
+			return;
+		}
 	}
 
 	/**

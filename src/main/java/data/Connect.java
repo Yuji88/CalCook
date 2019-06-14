@@ -34,8 +34,6 @@ public class Connect {
 
 			// ステートメント作成
 			stmt = conn.createStatement();
-			System.out.println("Successful connection!");
-			System.out.println("=========================================");
 		} catch (Exception e) {
 			resultCode = 99;
 			e.printStackTrace();

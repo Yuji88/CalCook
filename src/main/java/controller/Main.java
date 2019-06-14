@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.ProjectData;
 
@@ -28,6 +29,10 @@ public class Main extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+
+		HttpSession session = request.getSession();
+
 		String view = request.getParameter("view");
 		System.out.println("view = " + view);
 		if(view.equals("home")) {
@@ -40,9 +45,9 @@ public class Main extends HttpServlet {
 			String cookName = "";
 			int member = 0;
 			String errMsg = "";
-			request.setAttribute("projectName", projectName);
+			session.setAttribute("projectName", projectName);
 			request.setAttribute("cookName", cookName);
-			request.setAttribute("member", member);
+			session.setAttribute("member", member);
 			request.setAttribute("errMsg", errMsg);
 
 			ArrayList<String> projectnames = new ArrayList<>();

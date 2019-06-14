@@ -7,7 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dto.IngredientDispInfo;
 import dto.MenuIngredientInfo;
 import model.MenuData;
 import model.MenuIngredientData;
@@ -32,6 +34,9 @@ public class CookInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+
+		HttpSession session = request.getSession();
 		String projectName = request.getParameter("projectName");
 		String cookName = request.getParameter("cookName");
 		String smember = request.getParameter("member");
@@ -48,9 +53,15 @@ public class CookInfo extends HttpServlet {
 			if (projectName == null) {
 				projectName = "";
 			}
-			request.setAttribute("projectName", projectName);
+			cookName = "";
+			String ingredientName = "";
+			ArrayList<IngredientDispInfo> ingredientDispInfoList = new ArrayList<>();
+
+			session.setAttribute("projectName", projectName);
+			session.setAttribute("member", member);
+			request.setAttribute("ingredientDispInfoList", ingredientDispInfoList);
 			request.setAttribute("cookName", cookName);
-			request.setAttribute("member", member);
+			request.setAttribute("ingredientName", ingredientName);
 
 			// 料理選択画面遷移
 			request.getRequestDispatcher("CookSearch.jsp").forward(request, response);
@@ -86,10 +97,9 @@ public class CookInfo extends HttpServlet {
 				projectnames = projects.ProjectNameselect();
 
 				request.setAttribute("projectnames", projectnames);
-
-				request.setAttribute("projectName", projectName);
+				session.setAttribute("projectName", projectName);
 				request.setAttribute("cookName", cookName);
-				request.setAttribute("member", member);
+				session.setAttribute("member", member);
 				request.setAttribute("errMsg", errMsg);
 
 				// 未入力 自画面遷移
@@ -102,6 +112,23 @@ public class CookInfo extends HttpServlet {
 			MenuData menuData = new MenuData();
 			int menuid = menuData.MenuIdSelect(cookName);
 			menuIngredientDataList = menuIngredientData.EssMenuIngredientSelect(menuid);
+
+			if(menuIngredientDataList.size() == 0) {
+				String errMsg = "計算できる料理ではありません。";
+				ArrayList<String> projectnames = new ArrayList<>();
+				ProjectData projects = new ProjectData();
+				projectnames = projects.ProjectNameselect();
+
+				request.setAttribute("projectnames", projectnames);
+				request.setAttribute("projectName", projectName);
+				request.setAttribute("cookName", cookName);
+				request.setAttribute("member", member);
+				request.setAttribute("errMsg", errMsg);
+
+				// 未入力 自画面遷移
+				request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
+				return;
+			}
 
 			request.setAttribute("projectName", projectName);
 			request.setAttribute("cookName", cookName);

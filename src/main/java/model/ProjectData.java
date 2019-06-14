@@ -33,6 +33,7 @@ public class ProjectData {
 					id = tmp + 1;
 				}
 			}
+			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -67,6 +68,7 @@ public class ProjectData {
 				names.add(rs.getString("projectname"));
 			}
 
+			rs.close();
 			resultCode = Connect.DBClose();
 			if (resultCode != 0) {
 				System.out.println("データベースクローズに失敗しました");
