@@ -60,7 +60,7 @@ public class CookSearch extends HttpServlet {
 			} else if((cookName != null && !(cookName.equals(""))) && (ingredientName != null && !(ingredientName.equals("")))) {
 				MenuIngredientData menuIngredientData = new MenuIngredientData();
 				menuInfoList = menuIngredientData.EssIngredientMenuSelect(cookName, ingredientName);
-System.out.println(menuInfoList.size());
+
 				for(int i = 0; i < menuInfoList.size(); i++) {
 					ingredientDispInfoList.add(ingredientProcDisp.IngredientNameProc(menuInfoList.get(i)));
 				}
