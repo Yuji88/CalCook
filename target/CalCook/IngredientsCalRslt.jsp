@@ -12,9 +12,13 @@
 <body>
 <script src="_header.js"></script>
 <div id="main">
-projectName:<% out.print(projectName);%>
-cookName:<% out.print(cookName);%>
-member:<% out.print(member);%>
+  <h3>材料・分量計算結果画面</h3>
+  <p>説明：~~~~~</p>
+  <hr>
+  <h4>projectName:<% out.print(projectName);%></h4>
+  <h4>cookName:<% out.print(cookName);%></h4>
+  <h4>member:<% out.print(member);%></h4>
+  <hr>
 </div>
 <script src="_footer.js"></script>
 </body>

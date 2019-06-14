@@ -1,19 +1,17 @@
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String projectName = (String)request.getAttribute("projectName"); %>
+<% String cookName = (String)request.getAttribute("cookName"); %>
+<% int member = (int)request.getAttribute("member"); %>
+<% String errMsg = (String)request.getAttribute("errMsg"); %>
+<% ArrayList<String> projectnames = (ArrayList<String>)request.getAttribute("projectnames"); %>
 
+<!DOCTYPE HTML>
 <html>
 <head>
   <link rel="stylesheet" href="header_footer.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>料理情報入力画面</title>
-
-  <% String projectName = (String)request.getAttribute("projectName"); %>
-  <% String cookName = (String)request.getAttribute("cookName"); %>
-  <% int member = (int)request.getAttribute("member"); %>
-  <% String errMsg = (String)request.getAttribute("errMsg"); %>
-  <% ArrayList<String> projectnames = (ArrayList<String>)request.getAttribute("projectnames"); %>
 </head>
 
 <body>
