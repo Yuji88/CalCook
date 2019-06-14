@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
-<% String projectName = (String)request.getAttribute("projectName"); %>
+<% String projectName = (String)session.getAttribute("projectName"); %>
 <% String cookName = (String)request.getAttribute("cookName"); %>
-<% int member = (int)request.getAttribute("member"); %>
+<% int member = (int)session.getAttribute("member"); %>
 <% String errMsg = (String)request.getAttribute("errMsg"); %>
 <% ArrayList<String> projectnames = (ArrayList<String>)request.getAttribute("projectnames"); %>
 
@@ -38,9 +38,12 @@
             	out.write("<option value=\"\" selected> </optin>");
             	} else {
             	out.write("<option value=\""+ projectName + "\" selected>" + projectName + "</optin>");
+            	out.write("<option value=\"\"> </optin>");
                 }
             for(int i = 0; i < projectnames.size(); i++){
-            	out.write("<option value=\"" + projectnames.get(i) + "\">" + projectnames.get(i) + "</option>");
+            	if(!(projectName.equals(projectnames.get(i)))){
+            	    out.write("<option value=\"" + projectnames.get(i) + "\">" + projectnames.get(i) + "</option>");
+            	}
             }
             %>
           </select>
