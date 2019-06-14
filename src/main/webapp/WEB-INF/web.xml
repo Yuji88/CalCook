@@ -17,16 +17,16 @@
   	<servlet-class>controller.CookInfo</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>CookSearch</servlet-name>
-  	<display-name>CookSearch</display-name>
-  	<description></description>
-  	<servlet-class>controller.CookSearch</servlet-class>
-  </servlet>
-  <servlet>
   	<servlet-name>NewProject</servlet-name>
   	<display-name>NewProject</display-name>
   	<description></description>
   	<servlet-class>controller.NewProject</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CookSearch</servlet-name>
+  	<display-name>CookSearch</display-name>
+  	<description></description>
+  	<servlet-class>controller.CookSearch</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Main</servlet-name>
@@ -37,12 +37,12 @@
   	<url-pattern>/CookInfo</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>CookSearch</servlet-name>
-  	<url-pattern>/CookSearch</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>NewProject</servlet-name>
   	<url-pattern>/NewProject</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CookSearch</servlet-name>
+  	<url-pattern>/CookSearch</url-pattern>
   </servlet-mapping>
    <welcome-file-list>
     <welcome-file>TopMenu.jsp</welcome-file>
