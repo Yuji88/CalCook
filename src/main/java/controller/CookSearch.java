@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.IngredientDispInfo;
-import dto.IngredientInfo;
 import dto.MenuInfo;
 import model.MenuData;
 import model.MenuIngredientData;
@@ -44,7 +43,6 @@ public class CookSearch extends HttpServlet {
 
 		if(search != null) {
 			ArrayList<MenuInfo> menuInfoList = new ArrayList<>();
-			ArrayList<IngredientInfo> ingredientInfoList = new ArrayList<>();
 			ArrayList<IngredientDispInfo> ingredientDispInfoList = new ArrayList<>();
 			IngredientProcDisp ingredientProcDisp = new IngredientProcDisp();
 
