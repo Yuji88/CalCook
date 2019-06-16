@@ -52,8 +52,10 @@
 	  <p>
 	    <label for="cookName">料理名</label>
         <input type="text" name="cookName"
-          <% if (cookName != "" || cookName != null){
-          	 out.write("value=\"" + cookName + "\"");
+          <% if (cookName.equals("") || cookName == null){
+        	   out.write("value=\"\"");
+        	 } else {
+        	   out.write("value=\"" + cookName + "\"");
         	 }
           %>
         >

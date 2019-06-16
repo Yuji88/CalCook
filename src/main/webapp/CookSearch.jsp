@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.IngredientDispInfo"%>
 <% String cookName = (String)request.getAttribute("cookName"); %>
+<% String errMsg = (String)request.getAttribute("errMsg"); %>
 <% String ingredientName = (String)request.getAttribute("ingredientName"); %>
 <% ArrayList<IngredientDispInfo> ingredientDispInfoList
 			= (ArrayList<IngredientDispInfo>) request.getAttribute("ingredientDispInfoList");%>
@@ -33,7 +34,9 @@
     }
 	%>>
   <input type="submit" name="search" value="検索">
+  </form>
 
+  <form action="CookSearch">
   <hr>
 			<table>
 				<tr>
@@ -57,6 +60,10 @@
 				%>
 			</table>
 			<hr>
+	  <% if (errMsg != "" || errMsg != null){
+		out.write(errMsg);
+	    }
+	  %>
   <input type="submit" name="decision" value="決定">
   </form>
 </div>

@@ -28,6 +28,12 @@
   	<description></description>
   	<servlet-class>controller.CookSearch</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ProjectCookReg</servlet-name>
+  	<display-name>ProjectCookReg</display-name>
+  	<description></description>
+  	<servlet-class>controller.ProjectCookReg</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Main</servlet-name>
   	<url-pattern>/Main</url-pattern>
@@ -43,6 +49,10 @@
   <servlet-mapping>
   	<servlet-name>CookSearch</servlet-name>
   	<url-pattern>/CookSearch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProjectCookReg</servlet-name>
+  	<url-pattern>/ProjectCookReg</url-pattern>
   </servlet-mapping>
    <welcome-file-list>
     <welcome-file>TopMenu.jsp</welcome-file>

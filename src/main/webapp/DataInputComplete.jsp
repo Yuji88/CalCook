@@ -15,6 +15,10 @@
 
   <h3><%= dataMsg %></h3>
 
+  <form action = "Main">
+    <input type = "hidden" name = "view" value = "home">
+    <input type = "submit" value = "Homeに戻る">
+  </form>
 </div>
 <script src="_footer.js"></script>
 </body>
