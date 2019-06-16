@@ -84,7 +84,7 @@ public class MenuData {
 
 			String sql = "SELECT menuname FROM menu WHERE menuid = " + menuid + ";";
 			ResultSet rs = stmt.executeQuery(sql);
-
+			rs.next();
 			menuname = rs.getString("menuname");
 
 		} catch (SQLException e) {
@@ -108,9 +108,9 @@ public class MenuData {
 				return (menuid);
 			}
 
-			String sql = "SELECT menuid FROM menu WHERE menuname = " + menuname + ";";
+			String sql = "SELECT menuid FROM menu WHERE menuname = '" + menuname + "';";
 			ResultSet rs = stmt.executeQuery(sql);
-
+			rs.next();
 			menuid = rs.getInt("menuid");
 
 		} catch (SQLException e) {

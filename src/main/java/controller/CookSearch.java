@@ -41,6 +41,8 @@ public class CookSearch extends HttpServlet {
 		String decision = request.getParameter("decision");
 		String search = request.getParameter("search");
 
+		String errMsg = "";
+
 		if(search != null) {
 			ArrayList<MenuInfo> menuInfoList = new ArrayList<>();
 			ArrayList<IngredientDispInfo> ingredientDispInfoList = new ArrayList<>();
@@ -81,19 +83,32 @@ public class CookSearch extends HttpServlet {
 			request.setAttribute("ingredientDispInfoList", ingredientDispInfoList);
 			request.setAttribute("cookName", cookName);
 			request.setAttribute("ingredientName", ingredientName);
+			request.setAttribute("errMsg", errMsg);
 
 			request.getRequestDispatcher("CookSearch.jsp").forward(request, response);
 			return;
 
 		} else if(decision != null) {
-			String errMsg = "";
+			if(cookName == null || cookName.equals("")) {
+				ArrayList<IngredientDispInfo> ingredientDispInfoList = new ArrayList<>();
+				errMsg = "料理が選択されていません。リストにチェックを入れてください。";
+				cookName = "";
+				ingredientName = "";
+
+				request.setAttribute("ingredientDispInfoList", ingredientDispInfoList);
+				request.setAttribute("cookName", cookName);
+				request.setAttribute("ingredientName", ingredientName);
+				request.setAttribute("errMsg", errMsg);
+				request.getRequestDispatcher("CookSearch.jsp").forward(request, response);
+			}
+			errMsg = "";
 			ArrayList<String> projectnames = new ArrayList<>();
 			ProjectData projects = new ProjectData();
 			projectnames = projects.ProjectNameselect();
 
-			request.setAttribute("projectnames", projectnames);
 			request.setAttribute("cookName", cookName);
 			request.setAttribute("errMsg", errMsg);
+			request.setAttribute("projectnames", projectnames);
 			request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
 			return;
 		}

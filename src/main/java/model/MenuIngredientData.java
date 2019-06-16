@@ -86,6 +86,7 @@ public class MenuIngredientData {
 
 		return (menuInfoList);
 	}
+
 	public ArrayList<MenuInfo> EssIngredientMenuSelect(String menuname, String ingredientname) {
 
 		ArrayList<MenuInfo> menuInfoList = new ArrayList<>();

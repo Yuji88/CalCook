@@ -54,6 +54,7 @@ public class CookInfo extends HttpServlet {
 				projectName = "";
 			}
 			cookName = "";
+			String errMsg = "";
 			String ingredientName = "";
 			ArrayList<IngredientDispInfo> ingredientDispInfoList = new ArrayList<>();
 
@@ -62,6 +63,7 @@ public class CookInfo extends HttpServlet {
 			request.setAttribute("ingredientDispInfoList", ingredientDispInfoList);
 			request.setAttribute("cookName", cookName);
 			request.setAttribute("ingredientName", ingredientName);
+			request.setAttribute("errMsg", errMsg);
 
 			// 料理選択画面遷移
 			request.getRequestDispatcher("CookSearch.jsp").forward(request, response);
@@ -120,9 +122,7 @@ public class CookInfo extends HttpServlet {
 				projectnames = projects.ProjectNameselect();
 
 				request.setAttribute("projectnames", projectnames);
-				request.setAttribute("projectName", projectName);
 				request.setAttribute("cookName", cookName);
-				request.setAttribute("member", member);
 				request.setAttribute("errMsg", errMsg);
 
 				// 未入力 自画面遷移
@@ -130,10 +130,13 @@ public class CookInfo extends HttpServlet {
 				return;
 			}
 
+			String errMsg = "";
+
 			request.setAttribute("projectName", projectName);
 			request.setAttribute("cookName", cookName);
 			request.setAttribute("member", member);
-			request.setAttribute("menuIngredientDataList", menuIngredientDataList);
+			session.setAttribute("menuIngredientDataList", menuIngredientDataList);
+			request.setAttribute("errMsg", errMsg);
 
 			// 計算画面遷移
 			request.getRequestDispatcher("IngredientsCalRslt.jsp").forward(request, response);
