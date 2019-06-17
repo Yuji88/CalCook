@@ -20,7 +20,7 @@
   </form>
 
   <form action = "Main">
-  	<input type = "hidden" name = "view" value = "home">
+  	<input type = "hidden" name = "view" value = "Confirm">
     <input type = "submit"  value = "確認する">  <p>説明：~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
   </form>
 
