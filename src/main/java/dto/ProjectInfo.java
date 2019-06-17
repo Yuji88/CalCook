@@ -8,6 +8,14 @@ public class ProjectInfo {
 	private String startdate = "";
 	private String enddate = "";
 
+	public ProjectInfo() {
+		this.projectid = 0;
+		this.projectname = "";
+		this.member = 0;
+		this.startdate = "";
+		this.enddate = "";
+	}
+
 	public ProjectInfo(int projectid, String projectname, int member, String startdate, String enddate) {
 		this.projectid = projectid;
 		this.projectname = projectname;

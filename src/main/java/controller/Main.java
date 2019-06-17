@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.ProjectInfo;
 import model.ProjectData;
 
 /**
@@ -57,6 +58,25 @@ public class Main extends HttpServlet {
 			request.setAttribute("projectnames", projectnames);
 
 			request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
+			return;
+
+		}else if(view.equals("Confirm")) {
+			String errMsg = "";
+			String projectName = "";
+			String searchDate = "";
+			ArrayList<String> searchDateList = new ArrayList<>();
+
+			ArrayList<ProjectInfo> projectList = new ArrayList<>();
+			ProjectData projects = new ProjectData();
+			projectList = projects.AllProjectSelect();
+
+			request.setAttribute("searchDate", searchDate);
+			request.setAttribute("projectName", projectName);
+			request.setAttribute("errMsg", errMsg);
+			request.setAttribute("projectList", projectList);
+
+			request.getRequestDispatcher("ProjectList.jsp").forward(request, response);
+			return;
 
 		} else if (view.equals("NewProject")) {
 			String errMsg = "";
@@ -69,6 +89,7 @@ public class Main extends HttpServlet {
 			request.setAttribute("errMsg", errMsg);
 
 			request.getRequestDispatcher("NewProject.jsp").forward(request, response);
+			return;
 		}
 	}
 
