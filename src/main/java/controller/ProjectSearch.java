@@ -91,7 +91,6 @@ public class ProjectSearch extends HttpServlet {
 			ProjectInfo projectInfo = new ProjectInfo();
 			ProjectData projects = new ProjectData();
 			projectInfo = projects.ProjectSelect(projectid);
-			System.out.println(projectInfo.getMember());
 
 			request.setAttribute("projectInfo", projectInfo);
 
