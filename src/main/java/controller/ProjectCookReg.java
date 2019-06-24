@@ -40,7 +40,7 @@ public class ProjectCookReg extends HttpServlet {
 		String cookName = request.getParameter("cookName");
 		String smember = request.getParameter("member");
 		ArrayList<MenuIngredientInfo> menuIngredientInfo
-				= (ArrayList<dto.MenuIngredientInfo>) session.getAttribute("menuIngredientDataList");
+				= (ArrayList<MenuIngredientInfo>) session.getAttribute("menuIngredientDataList");
 
 		int member = 0;
 		if (smember != null && !(smember.equals(""))) {
@@ -54,17 +54,18 @@ public class ProjectCookReg extends HttpServlet {
 		}
 
 		ProjectData projectData = new ProjectData();
-		int projectid = projectData.ProjectIdselect();
+		int projectid = projectData.ProjectNameToIdSelect(projectName);
 
 		for(int i = 0; i < menuIngredientInfo.size(); i++) {
 			ProjectMenuData projectMenuData = new ProjectMenuData();
 			ProjectMenuInfo projectMenuInfo = new ProjectMenuInfo();
 			int id = projectMenuData.ProjectMenuIdselect();
+
 			projectMenuInfo.setId(id);
 			projectMenuInfo.setProjectid(projectid);
 			projectMenuInfo.setMenuid(menuIngredientInfo.get(i).getMenuid());
 			projectMenuInfo.setIngredientid(menuIngredientInfo.get(i).getIngredientid());
-			projectMenuInfo.setAmount(menuIngredientInfo.get(i).getAmount());
+			projectMenuInfo.setAmount(menuIngredientInfo.get(i).getAmount() * member);
 			projectMenuInfo.setUnit(menuIngredientInfo.get(i).getUnit());
 			projectMenuInfo.setEatmember(member);
 			projectMenuInfo.setEatdate(null);
@@ -75,7 +76,6 @@ public class ProjectCookReg extends HttpServlet {
 			int resultcode = projectMenuData.ProjectMenuInsert(projectMenuInfo);
 
 			if(resultcode == 20) {
-				System.out.println("中");
 				for(int j = 0; j < idList.size(); j++) {
 					projectMenuData.ProjectMenuDelete(idList.get(i));
 				}

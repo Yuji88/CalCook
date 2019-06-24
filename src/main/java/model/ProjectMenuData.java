@@ -3,6 +3,7 @@ package model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import data.Connect;
 import dto.ProjectMenuInfo;
@@ -43,6 +44,46 @@ public class ProjectMenuData {
 			return (resultCode);
 		}
 		return (id);
+	}
+	public ArrayList<ProjectMenuInfo> ProjectMenuSelect(int projectId) {
+		ArrayList<ProjectMenuInfo> projectMenuInfoList = new ArrayList<>();
+		int resultCode = 0;
+		Statement stmt = null;
+
+		resultCode = Connect.DBAccess();
+		stmt = Connect.getStmt();
+		if (resultCode != 0) {
+			System.out.println("データベースアクセスに失敗しました");
+			return (projectMenuInfoList);
+		}
+		try {
+			String sql = "SELECT * FROM projectmenu WHERE projectid = " + projectId + ";";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				ProjectMenuInfo projectMenuInfo = new ProjectMenuInfo();
+				projectMenuInfo.setId(rs.getInt("id"));
+				projectMenuInfo.setProjectid(rs.getInt("projectid"));
+				projectMenuInfo.setMenuid(rs.getInt("menuid"));
+				projectMenuInfo.setIngredientid(rs.getInt("ingredientid"));
+				projectMenuInfo.setAmount(rs.getInt("amount"));
+				projectMenuInfo.setUnit(rs.getString("unit"));
+				projectMenuInfo.setEatmember(rs.getInt("eatmember"));
+				projectMenuInfo.setEatdate(rs.getString("eatdate"));
+
+				projectMenuInfoList.add(projectMenuInfo);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		resultCode = Connect.DBClose();
+		if (resultCode != 0) {
+			System.out.println("データベースクローズに失敗しました");
+			return (projectMenuInfoList);
+		}
+		return (projectMenuInfoList);
 	}
 
 	public int ProjectMenuInsert(ProjectMenuInfo projectMenuInfo) {

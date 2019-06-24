@@ -338,4 +338,37 @@ public class ProjectData {
 		}
 		return (projectInfo);
 	}
+
+	public int ProjectNameToIdSelect(String projectName) {
+		int projectId = 0;
+
+		int resultCode = 0;
+		Statement stmt = null;
+
+		try {
+			resultCode = Connect.DBAccess();
+			stmt = Connect.getStmt();
+			if (resultCode != 0) {
+				System.out.println("データベースアクセスに失敗しました");
+				return (projectId);
+			}
+
+			// データ取得
+			String sql = "SELECT * FROM project WHERE projectname = '" + projectName + "';";
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+			projectId = rs.getInt("projectid");
+
+			rs.close();
+			resultCode = Connect.DBClose();
+			if (resultCode != 0) {
+				System.out.println("データベースクローズに失敗しました");
+				return (projectId);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (projectId);
+	}
 }

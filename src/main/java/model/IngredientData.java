@@ -56,7 +56,8 @@ public class IngredientData {
 			String sql = "SELECT ingredientname FROM ingredient WHERE ingredientid = " + ingredientid + ";";
 			ResultSet rs = stmt.executeQuery(sql);
 
-			ingredientname = rs.getString(ingredientname);
+			rs.next();
+			ingredientname = rs.getString("ingredientname");
 			rs.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

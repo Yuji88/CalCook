@@ -35,7 +35,6 @@ public class Main extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		String view = request.getParameter("view");
-		System.out.println("view = " + view);
 		if(view.equals("home")) {
 
 			request.getRequestDispatcher("TopMenu.jsp").forward(request, response);
@@ -64,7 +63,7 @@ public class Main extends HttpServlet {
 			String errMsg = "";
 			String projectName = "";
 			String searchDate = "";
-			ArrayList<String> searchDateList = new ArrayList<>();
+			// ArrayList<String> searchDateList = new ArrayList<>();
 
 			ArrayList<ProjectInfo> projectList = new ArrayList<>();
 			ProjectData projects = new ProjectData();

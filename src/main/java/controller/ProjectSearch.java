@@ -7,9 +7,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import dto.ProjectCookDisp;
 import dto.ProjectInfo;
 import model.ProjectData;
+import processing.ProjectCookDispProc;
 
 /**
  * Servlet implementation class ProjectSearch
@@ -30,7 +33,7 @@ public class ProjectSearch extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		HttpSession session = request.getSession();
 		String view = request.getParameter("view");
 		String searchDate = request.getParameter("searchDate");
 		String projectName = request.getParameter("projectName");
@@ -90,9 +93,14 @@ public class ProjectSearch extends HttpServlet {
 			}
 			ProjectInfo projectInfo = new ProjectInfo();
 			ProjectData projects = new ProjectData();
-			projectInfo = projects.ProjectSelect(projectid);
+			ProjectCookDispProc projectCookDispProc = new ProjectCookDispProc();
+			ArrayList<ProjectCookDisp> projectCookDispList = new ArrayList<>();
 
-			request.setAttribute("projectInfo", projectInfo);
+			projectInfo = projects.ProjectSelect(projectid);
+			projectCookDispList = projectCookDispProc.ProjectCookDispPrepare(projectid);
+
+			session.setAttribute("projectCookDispList", projectCookDispList);
+			session.setAttribute("projectInfo", projectInfo);
 
 			request.getRequestDispatcher("ProjectCookDetail.jsp").forward(request, response);
 			return;
