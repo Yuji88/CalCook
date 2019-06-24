@@ -4,15 +4,16 @@
 <html>
 <head>
   <link rel="stylesheet" href="header_footer.css">
+  <link rel="stylesheet" href="MainStyle.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Home - Welcome to CalCook!</title>
 </head>
 
 <body>
-<script src="_header.js"></script>
+<%@ include file="_header.jsp" %>
 
 <div id="main">
-  <h1>Welcome to CalCook!</h1>
+  <h1 class="maintitle">Welcome to CalCook!</h1>
 
   <form action = "Main">
 	<input type = "hidden" name = "view" value = "CookInfoInput">
@@ -31,6 +32,6 @@
   </form>
 
 </div>
-<script src="_footer.js"></script>
+<%@ include file="_footer.jsp" %>
 </body>
 </html>

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.maintitle{
+
+}
+
+.title{
+	position:   relative;
+	padding:    0.1em 0.5em;
+	font-size:  20px;
+	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
+	background: linear-gradient(to right, rgb(255, 186, 115), transparent);
+	color:      #545454;
+}
+

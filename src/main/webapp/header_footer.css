@@ -1,30 +1,82 @@
 @charset "UTF-8";
 
-#header{
-	position: fixed;	/* ヘッダーを固定する */
-	top: 0;	/* 上部から配置の基準位置を決める */
-	left: 0;	/* 左から配置の基準位置を決める */
-	width: 100%;	/* ヘッダーの横幅を指定する */
-	height: 35px;	/* ヘッダーの高さを指定する */
-	padding: 10px;	/* ヘッダーの余白を指定する(上下左右) */
-	background-color: #ffff00;	/* ヘッダーの背景色を指定する */
-	color: #000000;	/* フォントの色を指定する */
-}
-#footer{
-	position: fixed;	/* フッターを固定する */
-	bottom: 0;	/* 上部から配置の基準位置を決める */
-	left: 0;	/* 左から配置の基準位置を決める */
-	width: 100%;	/* フッターの横幅を指定する */
-	height: 35px;	/* フッターの高さを指定する */
-	padding:10px;	/* フッター内側の余白を指定する(上下左右) */
-	background-color: #ffff00;	/* フッターの背景色を指定する */
-	color: #000000;	/* フッターのフォントの色を指定する */
-}
-#main{
-	margin-left: 0;
-	margin-top: 60px;
+#header {
+	display: inline-block;
+	position: fixed; /* ヘッダーを固定する */
+	top: 0; /* 上部から配置の基準位置を決める */
+	left: 0; /* 左から配置の基準位置を決める */
+	width: 100%; /* ヘッダーの横幅を指定する */
+	height: 35px; /* ヘッダーの高さを指定する */
+	padding: 10px; /* ヘッダーの余白を指定する(上下左右) */
+	background-color: #ffff00; /* ヘッダーの背景色を指定する */
+	color: #000000; /* フォントの色を指定する */
+	box-shadow: 0px 2px 4px gray;
 }
 
-#right{
+#footer {
+	display: inline-block;
+	position: fixed; /* フッターを固定する */
+	bottom: 0; /* 上部から配置の基準位置を決める */
+	left: 0; /* 左から配置の基準位置を決める */
+	width: 100%; /* フッターの横幅を指定する */
+	height: 20px; /* フッターの高さを指定する */
+	padding: 10px; /* フッター内側の余白を指定する(上下左右) */
+	background-color: #ffff00; /* フッターの背景色を指定する */
+	color: #ffffff; /* フッターのフォントの色を指定する */
+	border: solid 1.5px;
+	border-style: solid none none none;
+	border-color: #dcbc8e;
+}
+
+#main {
+	display: inline-block;
+	margin: 0px 0px 0px 15px;
+	width: 95%;
+	height: 100%;
+	padding: 35px 0px 35px 0px;
+}
+
+#right {
 	text-align: right;
+}
+
+#copy {
+	vertical-align: middle;
+	color: #000;
+	font-size: 5px;
+}
+
+#black {
+	vertical-align: middle;
+	color: #000;
+}
+
+#body {
+	font-family: "メイリオ";
+}
+
+.calcook {
+	font-family: "メイリオ";
+	font-weight: bold;
+	display: block;
+	background-color: transparent;
+	color: #000;
+	font-size: 30px;
+	text-decoration: none;
+	border-style: none;
+	mardin: 0;
+	padding-right: 0;
+}
+
+.chizai {
+	display: inline-block;
+	float: right;
+	padding-right: 20px;
+	font-family: arial black;
+	display: block;
+	background-color: transparent;
+	color: #000;
+	font-size: 20px;
+	text-decoration: none;
+	border-style: none;
 }

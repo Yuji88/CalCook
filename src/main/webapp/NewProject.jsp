@@ -8,13 +8,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="header_footer.css">
+  <link rel="stylesheet" href="MainStyle.css">
   <meta charset="UTF-8">
   <title>新プロジェクト作成画面</title>
 </head>
 <body>
-<script src="_header.js"></script>
+<%@ include file="_header.jsp" %>
 <div id="main">
-  <h3>新プロジェクト作成画面</h3>
+  <h3 class="title">新プロジェクト作成画面</h3>
   <p>説明：*印がついている箇所は入力必須項目です。</p>
   	  <% if (errMsg != "" || errMsg != null){
 		out.write(errMsg);
@@ -49,6 +50,6 @@
     <input type = "submit" value = "次へ">
   </form>
 </div>
-<script src="_footer.js"></script>
+<%@ include file="_footer.jsp" %>
 </body>
 </html>

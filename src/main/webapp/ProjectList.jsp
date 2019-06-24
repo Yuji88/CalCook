@@ -10,13 +10,14 @@
 <html>
 <head>
   <link rel="stylesheet" href="header_footer.css">
+  <link rel="stylesheet" href="MainStyle.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>プロジェクト一覧画面</title>
 </head>
 <body>
-<script src="_header.js"></script>
+<%@ include file="_header.jsp" %>
 <div id="main">
-  <h3>プロジェクト一覧画面</h3>
+  <h3 class="title">プロジェクト一覧画面</h3>
   <p>説明：~~~~~</p>
   <hr>
   <form action="ProjectSearch">
@@ -71,6 +72,6 @@
   <input type="submit" name="decision" value="決定">
   </form>
 </div>
-<script src="_footer.js"></script>
+<%@ include file="_footer.jsp" %>
 </body>
 </html>

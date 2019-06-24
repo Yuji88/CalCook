@@ -10,13 +10,15 @@
 <html>
 <head>
   <link rel="stylesheet" href="header_footer.css">
+  <link rel="stylesheet" href="MainStyle.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
   <title>料理情報入力画面</title>
 </head>
 <body>
-<script src="_header.js"></script>
+<%@ include file="_header.jsp" %>
 <div id="main">
-  <h3>料理情報入力画面</h3>
+  <h3 class="title">料理情報入力画面</h3>
   <p>説明：~~~~~</p>
   <hr>
   <form action="CookInfo">
@@ -72,6 +74,6 @@
     </fieldset>
   </form>
 </div>
-<script src="_footer.js"></script>
+<%@ include file="_footer.jsp" %>
 </body>
 </html>
