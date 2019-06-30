@@ -15,12 +15,12 @@
 <link rel="stylesheet" href="header_footer.css">
 <link rel="stylesheet" href="MainStyle.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>PJ調理材料詳細画面</title>
+<title>PJ調理材料編集画面</title>
 </head>
 <body>
 	<%@ include file="_header.jsp"%>
 	<div id="main">
-		<h3 class="title">PJ調理材料詳細画面</h3>
+		<h3 class="title">PJ調理材料編集画面</h3>
 		<%out.write(projectInfo.getProjectname());%><br>
 		<%out.write(projectInfo.getStartdate());%>〜<%out.write(projectInfo.getEnddate());%><br>
 		<%out.write(String.valueOf(projectInfo.getMember()));%>人
@@ -68,17 +68,16 @@
 			%>
 		</table>
 		<hr>
-
 		<%
 			for (int i = 0; i < menuInfoList.size(); i++) {
 				out.write("<form action=\"ProjectCookEdit\">");
-
-				out.write("<input type=\"hidden\" name=\"view\" value=\"EditStart\">");
+				out.write("<input type=\"hidden\" name=\"view\" value=\"reveiw\">");
 
 				out.write("<div style=\"display:none\" class=\"menus\">");
 				out.write("<h4>" + menuInfoList.get(i).getMenuname() + "</h4>");
-				out.write("<h5>" + eatMemberList.get(i) + "人前</h5>");
-				out.write("<input type=\"submit\" name=\"edit\" value=\"情報編集\">");
+				out.write("<input type=\"hidden\" name=\"menuid\" value=\"" + menuInfoList.get(i).getMenuid() + "\">");
+				out.write("<h5><input type=\"text\" name=\"member\" value=\"" + eatMemberList.get(i) + "\">人前</h5>");
+				out.write("<input type=\"submit\" name=\"recalculation\" value=\"人数再計算\">");
 
 				out.write("<div style=\"width:300px;height:200px;overflow:auto;\">");
 				out.write("<table>");
@@ -90,21 +89,21 @@
 					if (menuInfoList.get(i).getMenuid() == projectCookDispList.get(j).getMenuid()) {
 						out.write("<tr>");
 						out.write("<td>" + projectCookDispList.get(j).getIngredientname() + "</td>");
-						out.write("<td>" + projectCookDispList.get(j).getAmount() + projectCookDispList.get(j).getUnit()
-								+ "</td>");
+						out.write("<td><input type=\"text\" name=\"amount\" value=\"" + projectCookDispList.get(j).getAmount() + "\"></td>");
+						out.write("<td>" + projectCookDispList.get(j).getUnit() + "</td>");
 						out.write("</tr>");
 					}
 				}
 				out.write("</table>");
 				out.write("</div>");
+				out.write("<input type=\"submit\" name=\"initialize\" value=\"分量を初期化する\">");
+				out.write("<input type=\"submit\" name=\"save\" value=\"保存する\">");
 				out.write("</div>");
 				out.write("</form>");
 			}
 		%>
 	</div>
-	<form action="">
-		<input type="submit" name="" value="発注書出力">
-	</form>
+
 	<%@ include file="_footer.jsp"%>
 </body>
 </html>
