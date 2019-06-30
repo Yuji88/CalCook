@@ -13,6 +13,7 @@ import dto.MenuIngredientInfo;
 import dto.ProjectMenuInfo;
 import model.ProjectData;
 import model.ProjectMenuData;
+import model.ProjectMenuHistoryData;
 
 /**
  * Servlet implementation class ProjectCookReg
@@ -59,6 +60,7 @@ public class ProjectCookReg extends HttpServlet {
 		for(int i = 0; i < menuIngredientInfo.size(); i++) {
 			ProjectMenuData projectMenuData = new ProjectMenuData();
 			ProjectMenuInfo projectMenuInfo = new ProjectMenuInfo();
+			ProjectMenuHistoryData projectMenuHistoryData = new ProjectMenuHistoryData();
 			int id = projectMenuData.ProjectMenuIdselect();
 
 			projectMenuInfo.setId(id);
@@ -80,6 +82,18 @@ public class ProjectCookReg extends HttpServlet {
 					projectMenuData.ProjectMenuDelete(idList.get(i));
 				}
 				String errMsg = "データ登録エラー (プロジェクト料理登録)";
+				request.setAttribute("errMsg", errMsg);
+				request.getRequestDispatcher("ERROR.jsp").forward(request, response);
+				return;
+			}
+
+			resultcode = projectMenuHistoryData.ProjectMenuHistoryInsert(projectMenuInfo);
+
+			if(resultcode == 20) {
+				for(int j = 0; j < idList.size(); j++) {
+					projectMenuData.ProjectMenuDelete(idList.get(i));
+				}
+				String errMsg = "データ登録エラー (プロジェクト料理履歴登録)";
 				request.setAttribute("errMsg", errMsg);
 				request.getRequestDispatcher("ERROR.jsp").forward(request, response);
 				return;

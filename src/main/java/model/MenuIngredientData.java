@@ -13,7 +13,7 @@ public class MenuIngredientData {
 
 	public ArrayList<MenuIngredientInfo> EssMenuIngredientSelect(int menuid) {
 
-		ArrayList<MenuIngredientInfo> menuIngredientInfoList =  new ArrayList<>();
+		ArrayList<MenuIngredientInfo> menuIngredientInfoList = new ArrayList<>();
 
 		int resultCode = 0;
 		Statement stmt = null;
@@ -28,7 +28,7 @@ public class MenuIngredientData {
 
 			String sql = "SELECT * FROM cookingredient JOIN menu ON cookingredient.menuid = menu.menuid" +
 					" JOIN ingredient ON cookingredient.ingredientid = ingredient.ingredientid WHERE cookingredient.menuid = "
-					+ menuid +";";
+					+ menuid + ";";
 
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -69,7 +69,7 @@ public class MenuIngredientData {
 
 			String sql = "SELECT * FROM cookingredient JOIN menu ON cookingredient.menuid = menu.menuid" +
 					" JOIN ingredient ON cookingredient.ingredientid = ingredient.ingredientid WHERE ingredient.ingredientname LIKE '%"
-					+ ingredientname +"%';";
+					+ ingredientname + "%';";
 
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -104,7 +104,7 @@ public class MenuIngredientData {
 
 			String sql = "SELECT * FROM cookingredient JOIN menu ON cookingredient.menuid = menu.menuid" +
 					" JOIN ingredient ON cookingredient.ingredientid = ingredient.ingredientid WHERE ingredient.ingredientname LIKE '%"
-					+ ingredientname +"%' AND menu.menuname LIKE '%" + menuname + "%';";
+					+ ingredientname + "%' AND menu.menuname LIKE '%" + menuname + "%';";
 
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -122,38 +122,67 @@ public class MenuIngredientData {
 		return (menuInfoList);
 	}
 
-public ArrayList<MenuInfo> IngredientMenuSelect(int ingredientid) {
+	public ArrayList<MenuInfo> IngredientMenuSelect(int ingredientid) {
 
-	ArrayList<MenuInfo> menuInfoList = new ArrayList<>();
+		ArrayList<MenuInfo> menuInfoList = new ArrayList<>();
 
-	int resultCode = 0;
-	Statement stmt = null;
+		int resultCode = 0;
+		Statement stmt = null;
 
-	try {
-		resultCode = Connect.DBAccess();
-		stmt = Connect.getStmt();
-		if (resultCode != 0) {
-			System.out.println("データベースアクセスに失敗しました");
-			return (menuInfoList);
+		try {
+			resultCode = Connect.DBAccess();
+			stmt = Connect.getStmt();
+			if (resultCode != 0) {
+				System.out.println("データベースアクセスに失敗しました");
+				return (menuInfoList);
+			}
+
+			String sql = "SELECT * FROM cookingredient JOIN menu ON cookingredient.menuid = menu.menuid" +
+					" JOIN ingredient ON cookingredient.ingredientid = ingredient.ingredientid WHERE cookingredient.ingredientid = "
+					+ ingredientid + ";";
+
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				MenuInfo menuInfo = new MenuInfo();
+				menuInfo.setMenuid(rs.getInt("menuid"));
+				menuInfo.setMenuname(rs.getString("menuname"));
+
+				menuInfoList.add(menuInfo);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		String sql = "SELECT * FROM cookingredient JOIN menu ON cookingredient.menuid = menu.menuid" +
-				" JOIN ingredient ON cookingredient.ingredientid = ingredient.ingredientid WHERE cookingredient.ingredientid = "
-				+ ingredientid +";";
-
-		ResultSet rs = stmt.executeQuery(sql);
-		while (rs.next()) {
-			MenuInfo menuInfo = new MenuInfo();
-			menuInfo.setMenuid(rs.getInt("menuid"));
-			menuInfo.setMenuname(rs.getString("menuname"));
-
-			menuInfoList.add(menuInfo);
-		}
-		rs.close();
-	} catch (SQLException e) {
-		e.printStackTrace();
+		return (menuInfoList);
 	}
 
-	return (menuInfoList);
-}
+	public int IngredientAmountSelect(int menuid, int ingredientid) {
+		int amount = 0;
+
+		int resultCode = 0;
+		Statement stmt = null;
+
+		try {
+			resultCode = Connect.DBAccess();
+			stmt = Connect.getStmt();
+			if (resultCode != 0) {
+				System.out.println("データベースアクセスに失敗しました");
+				return (amount);
+			}
+
+			String sql = "SELECT amount FROM cookingredient WHERE menuid = " + menuid
+					+ " AND ingredientid =" + ingredientid + ";";
+
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				amount = rs.getInt("amount");
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return (amount);
+	}
 }
