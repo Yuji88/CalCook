@@ -127,6 +127,48 @@ public class ProjectMenuData {
 		return (resultCode);
 	}
 
+	public int ProjectMenuUpdate(ProjectMenuInfo projectMenuInfo) {
+		int resultCode = 0;
+		Statement stmt = null;
+
+		int amount = projectMenuInfo.getAmount();
+		int eatmember = projectMenuInfo.getEatmember();
+		int projectid = projectMenuInfo.getProjectid();
+		int menuid = projectMenuInfo.getMenuid();
+		int ingredientid = projectMenuInfo.getIngredientid();
+
+		try {
+			resultCode = Connect.DBAccess();
+			stmt = Connect.getStmt();
+
+			if (resultCode != 0) {
+				System.out.println("データベースアクセスに失敗しました");
+				return (resultCode);
+			}
+
+			String sql = "UPDATE projectmenu SET amount = "+ amount + ", eatmember = " + eatmember +
+					" WHERE projectid = " + projectid +
+					" AND menuid = " + menuid +
+					" AND ingredientid = " + ingredientid + ";";
+
+			int insertRs = stmt.executeUpdate(sql);
+			if (insertRs != 1) {
+				resultCode = 20;
+				System.out.println("プロジェクト登録失敗しました");
+				return (resultCode);
+			}
+
+			resultCode = Connect.DBClose();
+			if (resultCode != 0) {
+				System.out.println("データベースクローズに失敗しました");
+				return (resultCode);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (resultCode);
+	}
+
 	public int ProjectMenuDelete(int id) {
 		int resultCode = 0;
 		Statement stmt = null;

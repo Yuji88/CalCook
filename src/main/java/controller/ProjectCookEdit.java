@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import dto.ProjectCookDisp;
 import dto.ProjectInfo;
-import model.MenuIngredientData;
+import dto.ProjectMenuInfo;
+import model.ProjectMenuData;
+import model.ProjectMenuHistoryData;
 
 /**
  * Servlet implementation class ProjectCookEdit
@@ -50,20 +52,29 @@ public class ProjectCookEdit extends HttpServlet {
 		String recalculation = request.getParameter("recalculation");
 		String save = request.getParameter("save");
 		String initialize = request.getParameter("initialize");
+		String sdispMenuid = request.getParameter("dispMenuid");
 
 		// 料理を食べる人数の文字 -> 数字変換
 		int member = 0;
 		if (smember != null && !(smember.equals(""))) {
-			member = Integer.parseInt(smember);
+			member = Integer.parseInt(smember.trim());
 		}
 
 		// メニューIDの文字 -> 数字変換
 		int menuid = 0;
 		if (smenuid != null && !(smenuid.equals(""))) {
-			menuid = Integer.parseInt(smenuid);
+			menuid = Integer.parseInt(smenuid.trim());
+		}
+
+		// 表示用メニューIDの文字 -> 数字変換
+		int dispMenuid = 0;
+		if (sdispMenuid != null && !(sdispMenuid.equals(""))) {
+			dispMenuid = Integer.parseInt(sdispMenuid.trim());
 		}
 
 		if (view.equals("EditStart")) {
+			request.setAttribute("dispMenuid", dispMenuid);
+
 			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
 			return;
 
@@ -71,7 +82,6 @@ public class ProjectCookEdit extends HttpServlet {
 			for (int i = 0; i < projectCookDispList.size(); i++) {
 				if (projectCookDispList.get(i).getMenuid() == menuid) {
 					ProjectCookDisp tmpProjectCookDisp = projectCookDispList.get(i);
-
 					int tmpAmount = (int) Math
 							.ceil(tmpProjectCookDisp.getAmount() / tmpProjectCookDisp.getEatmember());
 					tmpProjectCookDisp.setAmount(tmpAmount * member);
@@ -81,28 +91,55 @@ public class ProjectCookEdit extends HttpServlet {
 				}
 			}
 			session.setAttribute("projectCookDispList", projectCookDispList);
+			request.setAttribute("dispMenuid", dispMenuid);
 
 			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
 			return;
 
 		} else if (save != null) {
+			for(int i = 0; i < projectCookDispList.size(); i++) {
+				ProjectMenuInfo tmpProjectMenuInfo = new ProjectMenuInfo();
+				ProjectMenuData projectMenuData = new ProjectMenuData();
+				tmpProjectMenuInfo.setProjectid(projectCookDispList.get(i).getProjectid());
+				tmpProjectMenuInfo.setMenuid(projectCookDispList.get(i).getMenuid());
+				tmpProjectMenuInfo.setIngredientid(projectCookDispList.get(i).getIngredientid());
+				tmpProjectMenuInfo.setEatmember(projectCookDispList.get(i).getEatmember());
+				tmpProjectMenuInfo.setAmount(projectCookDispList.get(i).getAmount());
 
-			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
+				int resultCode = projectMenuData.ProjectMenuUpdate(tmpProjectMenuInfo);
+
+				if(resultCode != 0 ) {
+					String errMsg = "システムエラー(プロジェクト料理編集 失敗)";
+					request.setAttribute("errMsg", errMsg);
+					request.getRequestDispatcher("ERROR.jsp").forward(request, response);
+				}
+			}
+
+			request.setAttribute("dispMenuid", dispMenuid);
+			request.getRequestDispatcher("ProjectCookDetail.jsp").forward(request, response);
 			return;
 
 		} else if (initialize != null) {
 			for (int i = 0; i < projectCookDispList.size(); i++) {
 				if (projectCookDispList.get(i).getMenuid() == menuid) {
+					ProjectMenuInfo tmpProjectMenuInfo = new ProjectMenuInfo();
 					ProjectCookDisp tmpProjectCookDisp = projectCookDispList.get(i);
-					MenuIngredientData menuIngredientData = new MenuIngredientData();
-					int tmpAmount = menuIngredientData.IngredientAmountSelect(menuid,
-							tmpProjectCookDisp.getIngredientid());
-					tmpProjectCookDisp.setAmount(tmpAmount * tmpProjectCookDisp.getEatmember());
+					ProjectMenuHistoryData projectMenuHistoryData = new ProjectMenuHistoryData();
+
+					int projectid = projectCookDispList.get(i).getProjectid();
+					int ingredientid = projectCookDispList.get(i).getIngredientid();
+
+					tmpProjectMenuInfo = projectMenuHistoryData.ProjectMenuHistSelect(projectid, menuid, ingredientid);
+					int tmpAmount = tmpProjectMenuInfo.getAmount();
+					int tmpEatmember = tmpProjectMenuInfo.getEatmember();
+					tmpProjectCookDisp.setAmount(tmpAmount);
+					tmpProjectCookDisp.setEatmember(tmpEatmember);
 
 					projectCookDispList.set(i, tmpProjectCookDisp);
 				}
 			}
 			session.setAttribute("projectCookDispList", projectCookDispList);
+			request.setAttribute("dispMenuid", dispMenuid);
 
 			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
 			return;

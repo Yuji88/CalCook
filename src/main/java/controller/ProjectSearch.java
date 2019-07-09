@@ -42,7 +42,6 @@ public class ProjectSearch extends HttpServlet {
 		String errMsg = "";
 
 		int projectid = 0;
-
 		if (sprojectid != null && !(sprojectid.equals(""))) {
 			projectid = Integer.parseInt(sprojectid);
 		}

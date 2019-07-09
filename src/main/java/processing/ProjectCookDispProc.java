@@ -25,7 +25,7 @@ public class ProjectCookDispProc {
 			projectCookDisp.setProjectid(projectMenuInfoList.get(i).getProjectid());
 			projectCookDisp.setMenuid(projectMenuInfoList.get(i).getMenuid());
 			projectCookDisp.setMenuname(menuData.MenuNameSelect(projectMenuInfoList.get(i).getMenuid()));
-			projectCookDisp.setIngredientid(projectMenuInfoList.get(i).getMenuid());
+			projectCookDisp.setIngredientid(projectMenuInfoList.get(i).getIngredientid());
 			projectCookDisp.setIngredientname(ingredientData.IngredientNameSelect(projectMenuInfoList.get(i).getIngredientid()));
 			projectCookDisp.setAmount(projectMenuInfoList.get(i).getAmount());
 			projectCookDisp.setUnit(projectMenuInfoList.get(i).getUnit());

@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -21,7 +22,7 @@ public class ProjectMenuHistoryData {
 				return (resultCode);
 			}
 
-			String sql = "INSERT INTO projectmenu VALUES ("
+			String sql = "INSERT INTO projectmenuhistory VALUES ("
 					+ projectMenuInfo.getId() + ", "
 					+ "'" + projectMenuInfo.getProjectid() + "', "
 					+ "'" + projectMenuInfo.getMenuid() + "', "
@@ -62,7 +63,7 @@ public class ProjectMenuHistoryData {
 				return (resultCode);
 			}
 
-			String sql = "DELETE FROM projectmenu WHERE ('" + id + "');";
+			String sql = "DELETE FROM projectmenuhistory WHERE ('" + id + "');";
 
 			int insertRs = stmt.executeUpdate(sql);
 			if (insertRs != 1) {
@@ -80,5 +81,46 @@ public class ProjectMenuHistoryData {
 			e.printStackTrace();
 		}
 		return (resultCode);
+	}
+
+	public ProjectMenuInfo ProjectMenuHistSelect(int projectId, int menuid, int ingredientid) {
+		ProjectMenuInfo projectMenuInfo = new ProjectMenuInfo();
+		int resultCode = 0;
+		Statement stmt = null;
+
+		resultCode = Connect.DBAccess();
+		stmt = Connect.getStmt();
+		if (resultCode != 0) {
+			System.out.println("データベースアクセスに失敗しました");
+			return (projectMenuInfo);
+		}
+		try {
+			String sql = "SELECT * FROM projectmenuhistory WHERE"
+					+ " projectid = " + projectId
+					+ "AND menuid = " + menuid
+					+ "AND ingredientid = " + ingredientid + ";";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				projectMenuInfo.setId(rs.getInt("id"));
+				projectMenuInfo.setProjectid(rs.getInt("projectid"));
+				projectMenuInfo.setMenuid(rs.getInt("menuid"));
+				projectMenuInfo.setIngredientid(rs.getInt("ingredientid"));
+				projectMenuInfo.setAmount(rs.getInt("amount"));
+				projectMenuInfo.setUnit(rs.getString("unit"));
+				projectMenuInfo.setEatmember(rs.getInt("eatmember"));
+				projectMenuInfo.setEatdate(rs.getString("eatdate"));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		resultCode = Connect.DBClose();
+		if (resultCode != 0) {
+			System.out.println("データベースクローズに失敗しました");
+			return (projectMenuInfo);
+		}
+		return (projectMenuInfo);
 	}
 }
