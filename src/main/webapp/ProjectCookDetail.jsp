@@ -78,6 +78,7 @@
 				out.write("<div style=\"display:none\" class=\"menus\">");
 				out.write("<h4>" + menuInfoList.get(i).getMenuname() + "</h4>");
 				out.write("<h5>" + eatMemberList.get(i) + "人前</h5>");
+				out.write("<input type=\"hidden\" name=\"dispMenuid\" value=\"" + menuInfoList.get(i).getMenuid() + "\">");
 				out.write("<input type=\"submit\" name=\"edit\" value=\"情報編集\">");
 
 				out.write("<div style=\"width:300px;height:200px;overflow:auto;\">");

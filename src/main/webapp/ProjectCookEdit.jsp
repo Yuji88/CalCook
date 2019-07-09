@@ -8,6 +8,7 @@
 <%ArrayList<ProjectCookDisp> projectCookDispList = (ArrayList<ProjectCookDisp>) session.getAttribute("projectCookDispList");%>
 <%ArrayList<MenuInfo> menuInfoList = new ArrayList<>();%>
 <%ArrayList<Integer> eatMemberList = new ArrayList<>();%>
+<%int dispMenuid = (int)request.getAttribute("dispMenuid"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,10 +74,16 @@
 				out.write("<form action=\"ProjectCookEdit\">");
 				out.write("<input type=\"hidden\" name=\"view\" value=\"reveiw\">");
 
-				out.write("<div style=\"display:none\" class=\"menus\">");
+				if(dispMenuid == menuInfoList.get(i).getMenuid()){
+					out.write("<div style=\"display:block\" class=\"menus\">");
+				} else {
+					out.write("<div style=\"display:none\" class=\"menus\">");
+				}
+
 				out.write("<h4>" + menuInfoList.get(i).getMenuname() + "</h4>");
 				out.write("<input type=\"hidden\" name=\"menuid\" value=\"" + menuInfoList.get(i).getMenuid() + "\">");
 				out.write("<h5><input type=\"text\" name=\"member\" value=\"" + eatMemberList.get(i) + "\">人前</h5>");
+				out.write("<input type=\"hidden\" name=\"dispMenuid\" value=\"" + menuInfoList.get(i).getMenuid() + "\">");
 				out.write("<input type=\"submit\" name=\"recalculation\" value=\"人数再計算\">");
 
 				out.write("<div style=\"width:300px;height:200px;overflow:auto;\">");
