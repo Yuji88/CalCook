@@ -4,11 +4,12 @@
 <%@page import="dto.ProjectInfo"%>
 <%@page import="dto.MenuInfo"%>
 <%@page import="dto.ProjectCookDisp"%>
-<%ProjectInfo projectInfo = (ProjectInfo) session.getAttribute("projectInfo");%>
-<%ArrayList<ProjectCookDisp> projectCookDispList = (ArrayList<ProjectCookDisp>) session.getAttribute("projectCookDispList");%>
-<%ArrayList<MenuInfo> menuInfoList = new ArrayList<>();%>
-<%ArrayList<Integer> eatMemberList = new ArrayList<>();%>
-<%int dispMenuid = (int)request.getAttribute("dispMenuid"); %>
+<% ProjectInfo projectInfo = (ProjectInfo) session.getAttribute("projectInfo");%>
+<% ArrayList<ProjectCookDisp> projectCookDispList = (ArrayList<ProjectCookDisp>) session.getAttribute("projectCookDispList");%>
+<% ArrayList<MenuInfo> menuInfoList = new ArrayList<>();%>
+<% ArrayList<Integer> eatMemberList = new ArrayList<>();%>
+<% int dispMenuid = (int)request.getAttribute("dispMenuid"); %>
+<% String errMsg = (String)request.getAttribute("errMsg"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +70,10 @@
 			%>
 		</table>
 		<hr>
+		<%if (errMsg != "" || errMsg != null) {
+				out.write(errMsg);
+			}
+		%>
 		<%
 			for (int i = 0; i < menuInfoList.size(); i++) {
 				out.write("<form action=\"ProjectCookEdit\">");
@@ -96,7 +101,9 @@
 					if (menuInfoList.get(i).getMenuid() == projectCookDispList.get(j).getMenuid()) {
 						out.write("<tr>");
 						out.write("<td>" + projectCookDispList.get(j).getIngredientname() + "</td>");
-						out.write("<td><input type=\"text\" name=\"amount\" value=\"" + projectCookDispList.get(j).getAmount() + "\"></td>");
+						out.write("<input type=\"hidden\" name=\"menus\" value=\"" + projectCookDispList.get(j).getMenuid() + "\">");
+						out.write("<input type=\"hidden\" name=\"ingredients\" value=\"" + projectCookDispList.get(j).getIngredientid() + "\">");
+						out.write("<td><input type=\"text\" name=\"amounts\" value=\"" + projectCookDispList.get(j).getAmount() + "\"></td>");
 						out.write("<td>" + projectCookDispList.get(j).getUnit() + "</td>");
 						out.write("</tr>");
 					}
