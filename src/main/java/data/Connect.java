@@ -8,9 +8,9 @@ import java.sql.Statement;
 public class Connect {
 
 	// Azure用接続文字列
-//	 final static String URL = "jdbc:sqlserver://calcookserver.database.windows.net:1433;database=ChiZaiDB_1;user=chizaiAdmin@calcookserver;password=P@ssWord!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+	 final static String URL = "jdbc:sqlserver://calcookserver.database.windows.net:1433;database=ChiZaiDB_1;user=chizaiAdmin@calcookserver;password=P@ssWord!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 	// ローカル接続用接続文字列
-	final static String URL = "jdbc:postgresql:calcook";
+//	final static String URL = "jdbc:postgresql:calcook";
 	private static Connection conn = null;
 	private static Statement stmt = null;
 

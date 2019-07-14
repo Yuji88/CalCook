@@ -42,11 +42,15 @@ public class ProjectCookEdit extends HttpServlet {
 		ProjectInfo projectInfo = (ProjectInfo) session.getAttribute("projectInfo");
 		ArrayList<ProjectCookDisp> projectCookDispList =
 				(ArrayList<ProjectCookDisp>) session.getAttribute("projectCookDispList");
+		String errMsg = "";
 
 		// 情報編集用変数
 		String smenuid = request.getParameter("menuid");
-		String amount = request.getParameter("amount");
 		String smember = request.getParameter("member");
+
+		String[] smenus = request.getParameterValues("menus");
+		String[] singredients = request.getParameterValues("ingredients");
+		String[] samounts = request.getParameterValues("amounts");
 
 		// 処理判断変数
 		String recalculation = request.getParameter("recalculation");
@@ -74,6 +78,7 @@ public class ProjectCookEdit extends HttpServlet {
 
 		if (view.equals("EditStart")) {
 			request.setAttribute("dispMenuid", dispMenuid);
+			request.setAttribute("errMsg", errMsg);
 
 			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
 			return;
@@ -92,11 +97,34 @@ public class ProjectCookEdit extends HttpServlet {
 			}
 			session.setAttribute("projectCookDispList", projectCookDispList);
 			request.setAttribute("dispMenuid", dispMenuid);
+			request.setAttribute("errMsg", errMsg);
 
 			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
 			return;
 
 		} else if (save != null) {
+			int[] menus = new int[smenus.length];
+			int[] ingredients = new int[singredients.length];
+			int[] amounts = new int[samounts.length];;
+
+			for (int i = 0; i < samounts.length; i++) {
+				if ((smenus[i] != null && !(smenus[i].equals("")))
+						&& (singredients[i] != null && !(singredients[i].equals("")))
+						&& (samounts[i] != null && !(samounts[i].equals("")))) {
+
+					menus[i] = Integer.parseInt(smenus[i]);
+					ingredients[i] = Integer.parseInt(singredients[i]);
+					amounts[i] = Integer.parseInt(samounts[i]);
+				} else {
+					errMsg = "分量に数字以外が入力されています。";
+					request.setAttribute("errMsg", errMsg);
+					request.setAttribute("dispMenuid", dispMenuid);
+
+					request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
+					return;
+				}
+			}
+
 			for(int i = 0; i < projectCookDispList.size(); i++) {
 				ProjectMenuInfo tmpProjectMenuInfo = new ProjectMenuInfo();
 				ProjectMenuData projectMenuData = new ProjectMenuData();
@@ -105,17 +133,24 @@ public class ProjectCookEdit extends HttpServlet {
 				tmpProjectMenuInfo.setIngredientid(projectCookDispList.get(i).getIngredientid());
 				tmpProjectMenuInfo.setEatmember(projectCookDispList.get(i).getEatmember());
 				tmpProjectMenuInfo.setAmount(projectCookDispList.get(i).getAmount());
+				for (int j = 0; j < samounts.length; j++) {
+					if (tmpProjectMenuInfo.getMenuid() == menus[j]
+							&& tmpProjectMenuInfo.getIngredientid() == ingredients[j]) {
+						tmpProjectMenuInfo.setAmount(amounts[j]);
+					}
+				}
 
 				int resultCode = projectMenuData.ProjectMenuUpdate(tmpProjectMenuInfo);
 
 				if(resultCode != 0 ) {
-					String errMsg = "システムエラー(プロジェクト料理編集 失敗)";
+					errMsg = "システムエラー(プロジェクト料理編集 失敗)";
 					request.setAttribute("errMsg", errMsg);
 					request.getRequestDispatcher("ERROR.jsp").forward(request, response);
 				}
 			}
 
 			request.setAttribute("dispMenuid", dispMenuid);
+			request.setAttribute("errMsg", errMsg);
 			request.getRequestDispatcher("ProjectCookDetail.jsp").forward(request, response);
 			return;
 
@@ -140,6 +175,7 @@ public class ProjectCookEdit extends HttpServlet {
 			}
 			session.setAttribute("projectCookDispList", projectCookDispList);
 			request.setAttribute("dispMenuid", dispMenuid);
+			request.setAttribute("errMsg", errMsg);
 
 			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
 			return;
