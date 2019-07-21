@@ -1,3 +1,6 @@
+<!-- 画面ID：k00g02	エラーメッセージ -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String errMsg = (String)request.getAttribute("errMsg"); %>
 

@@ -1,3 +1,6 @@
+<!-- 画面ID：k02g01	PJ一覧画面 -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.ProjectInfo"%>
@@ -17,6 +20,10 @@
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
+  <form action="Main">
+    <input type="hidden" name="view" value="home">
+    <input class="Return" type="submit" name="calculate" value="＜ 戻る">
+  </form>
   <h3 class="title">プロジェクト一覧画面</h3>
   <p>説明：~~~~~</p>
   <hr>

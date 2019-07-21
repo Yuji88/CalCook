@@ -3,7 +3,7 @@
 
 <div id="header">
 	<form action="Main">
-		<input type="hidden" name="view" value="home"> <input
-			type="submit" value="CalCook" class="calcook">
+		<input type="hidden" name="view" value="home">
+		<input type="submit" value="CalCook" class="calcook">
 	</form>
 </div>

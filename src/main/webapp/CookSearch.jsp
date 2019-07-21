@@ -1,3 +1,6 @@
+<!-- 画面ID：k01g02	料理検索画面 -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.IngredientDispInfo"%>
@@ -18,6 +21,9 @@
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
+  <form action="CookSearch">
+    <input class="Return" type="submit" name="decision" value="＜ 戻る">
+  </form>
   <h3 class="title">料理検索画面</h3>
   <p>説明：~~~~~</p>
   <form action="CookSearch">

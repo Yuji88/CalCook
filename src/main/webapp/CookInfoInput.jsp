@@ -1,3 +1,6 @@
+<!-- 画面ID：k01g01	料理名・人数入力画面 -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <% String projectName = (String)session.getAttribute("projectName"); %>
@@ -13,12 +16,16 @@
   <link rel="stylesheet" href="MainStyle.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <title>料理情報入力画面</title>
+  <title>料理名・人数入力画面</title>
 </head>
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
-  <h3 class="title">料理情報入力画面</h3>
+  <form action="Main">
+    <input type="hidden" name="view" value="home">
+    <input class="Return" type="submit" name="calculate" value="＜ 戻る">
+  </form>
+  <h3 class="title">料理名・人数入力画面</h3>
   <p>説明：~~~~~</p>
   <hr>
   <form action="CookInfo">
@@ -53,14 +60,13 @@
 
 	  <p>
 	    <label for="cookName">料理名</label>
-        <input type="text" name="cookName"
-          <% if (cookName.equals("") || cookName == null){
-        	   out.write("value=\"\"");
+	    <% if (cookName.equals("") || cookName == null){
+        	   out.write("<h4></h4>");
         	 } else {
-        	   out.write("value=\"" + cookName + "\"");
+        	   out.write("<h4>" + cookName + "</h4>");
+        	   out.write("<input type=\"hidden\" name=\"cookName\" value=\"" + cookName + "\"");
         	 }
           %>
-        >
         <input type="submit" name="search" value="料理を探す">
 	  </p>
 

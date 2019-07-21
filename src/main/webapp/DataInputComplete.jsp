@@ -1,3 +1,6 @@
+<!-- 画面ID：k00g03	完了メッセージ -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String dataMsg = (String)request.getAttribute("dataMsg"); %>
 
@@ -12,7 +15,7 @@
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
-  <h3 class="title">登録完了画面</h3>
+  <h3 class="title-NoReturn">登録完了画面</h3>
 
   <h4><%= dataMsg %></h4>
 

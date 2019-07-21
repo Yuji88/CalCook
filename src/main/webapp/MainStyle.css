@@ -11,5 +11,52 @@
 	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
 	background: linear-gradient(to right, rgb(255, 186, 115), transparent);
 	color:      #545454;
+	margin:     0px;
+}
+.title-NoReturn{
+	position:   relative;
+	padding:    0.1em 0.5em;
+	margin-top: 30px;
+	font-size:  20px;
+	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
+	background: linear-gradient(to right, rgb(255, 186, 115), transparent);
+	color:      #545454;
 }
 
+input.flat-btn {
+	border-style:none;
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #67c5ff;
+	border: solid 2px #67c5ff;
+	border-radius: 3px;
+	transition: .4s;
+}
+
+input.flat-btn:hover {
+	border-style: none;
+	padding: 0.3em 1em;
+	background: #67c5ff;
+	border: solid 2px #ffffff;
+	color: white;
+}
+
+input.Return {
+	margin: 20px 0px 10px 0px;
+	border-style:none;
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #67c5ff;
+	border: solid 2px #67c5ff;
+	border-radius: 3px;
+}
+
+input.Return:hover {
+	border-style: none;
+	padding: 0.3em 1em;
+	background: #67c5ff;
+	border: solid 2px #ffffff;
+	color: white;
+}

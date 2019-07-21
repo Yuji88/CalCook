@@ -1,3 +1,6 @@
+<!-- 画面ID：k02g03	PJ調理材料編集画面 -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
@@ -20,12 +23,16 @@
 <title>PJ調理材料編集画面</title>
 </head>
 <body>
-	<%@ include file="_header.jsp"%>
-	<div id="main">
-		<h3 class="title">PJ調理材料編集画面</h3>
-		<%out.write(projectInfo.getProjectname());%><br>
-		<%out.write(projectInfo.getStartdate());%>〜<%out.write(projectInfo.getEnddate());%><br>
-		<%out.write(String.valueOf(projectInfo.getMember()));%>人
+  <%@ include file="_header.jsp"%>
+  <div id="main">
+    <form action="Main">
+      <input type = "hidden" name = "view" value = "Confirm">
+      <input class="Return" type="submit" name="calculate" value="＜ 一覧に戻る">
+    </form>
+    <h3 class="title">PJ調理材料編集画面</h3>
+      <%out.write(projectInfo.getProjectname());%><br>
+      <%out.write(projectInfo.getStartdate());%>〜<%out.write(projectInfo.getEnddate());%><br>
+      <%out.write(String.valueOf(projectInfo.getMember()));%>人
 
 		<hr>
 		<table id="menus">

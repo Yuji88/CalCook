@@ -1,3 +1,6 @@
+<!-- 画面ID：k01g03	分量計算画面 -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.MenuIngredientInfo"%>
@@ -14,12 +17,16 @@
   <link rel="stylesheet" href="header_footer.css">
   <link rel="stylesheet" href="MainStyle.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>材料・分量計算結果画面</title>
+<title>分量計算画面</title>
 </head>
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
-  <h3 class="title">材料・分量計算結果画面</h3>
+  <form action="CookSearch">
+    <% out.write("<input type=\"hidden\" name=\"cookName\" value=\"" + cookName + "\">"); %>
+    <input class="Return" type="submit" name="decision" value="＜ 戻る">
+  </form>
+  <h3 class="title">分量計算画面</h3>
   <p>説明：~~~~~</p>
   <hr>
   <form action="ProjectCookReg">
