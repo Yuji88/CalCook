@@ -89,7 +89,22 @@ public class CookSearch extends HttpServlet {
 			return;
 
 		} else if(decision != null) {
-			if(cookName == null || cookName.equals("")) {
+			if(decision.equals("＜ 戻る")) {
+				ArrayList<String> projectnames = new ArrayList<>();
+				ProjectData projects = new ProjectData();
+				projectnames = projects.ProjectNameselect();
+
+				if (cookName == null || cookName.equals("")) {
+					cookName = "";
+				}
+				errMsg = "";
+				request.setAttribute("cookName", cookName);
+				request.setAttribute("errMsg", errMsg);
+				request.setAttribute("projectnames", projectnames);
+				request.getRequestDispatcher("CookInfoInput.jsp").forward(request, response);
+				return;
+
+			} else if(cookName == null || cookName.equals("")) {
 				ArrayList<IngredientDispInfo> ingredientDispInfoList = new ArrayList<>();
 				errMsg = "料理が選択されていません。リストにチェックを入れてください。";
 				cookName = "";
