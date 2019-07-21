@@ -1,6 +1,7 @@
 /Users/yuji/workspace/CalCook/src/main/java/controller/NewProject.java
 /Users/yuji/workspace/CalCook/src/main/java/data/Connect.java
 /Users/yuji/workspace/CalCook/src/main/java/processing/IngredientProcDisp.java
+/Users/yuji/workspace/CalCook/src/main/java/controller/ProjectCookEdit.java
 /Users/yuji/workspace/CalCook/src/main/java/model/ProjectData.java
 /Users/yuji/workspace/CalCook/src/main/java/processing/YearJudge.java
 /Users/yuji/workspace/CalCook/src/main/java/dto/IngredientInfo.java
@@ -17,6 +18,7 @@
 /Users/yuji/workspace/CalCook/src/main/java/controller/CookInfo.java
 /Users/yuji/workspace/CalCook/src/main/java/dto/MenuIngredientInfo.java
 /Users/yuji/workspace/CalCook/src/main/java/controller/Main.java
+/Users/yuji/workspace/CalCook/src/main/java/model/ProjectMenuHistoryData.java
 /Users/yuji/workspace/CalCook/src/main/java/dto/ProjectInfo.java
 /Users/yuji/workspace/CalCook/src/main/java/controller/ProjectCookReg.java
 /Users/yuji/workspace/CalCook/src/main/java/model/IngredientData.java
