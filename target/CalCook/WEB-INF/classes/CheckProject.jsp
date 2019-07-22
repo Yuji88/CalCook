@@ -1,20 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<!-- 画面ID：kXXgXX	登録プロジェクト確認画面 -->
+<!-- 初期構築：2019/07/15 ChiZai Tagawa Yuji -->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String projectname = (String)request.getAttribute("projectname"); %>
+<% int member = (int)request.getAttribute("member"); %>
+<% String startday = (String)request.getAttribute("startday"); %>
+<% String endday = (String)request.getAttribute("endday"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" href="header_footer.css">
+  <link rel="stylesheet" href="MainStyle.css">
   <meta charset="UTF-8">
-  <% String projectname = (String)request.getAttribute("projectname"); %>
-  <% int member = (int)request.getAttribute("member"); %>
-  <% String startday = (String)request.getAttribute("startday"); %>
-  <% String endday = (String)request.getAttribute("endday"); %>
   <title>登録プロジェクト確認画面</title>
 </head>
 <body>
-  <script src="_header.js"></script>
+  <%@ include file="_header.jsp" %>
   <div id="main">
-    <h3>登録プロジェクト確認画面</h3>
+    <h3 class="title">登録プロジェクト確認画面</h3>
     <p>以下の内容で登録してよろしいですか？</p>
     <hr>
 
@@ -41,6 +45,6 @@
     <input type="submit" value="登録する">
   </form>
   </div>
-  <script src="_footer.js"></script>
+  <%@ include file="_footer.jsp" %>
 </body>
 </html>
