@@ -15,34 +15,33 @@
   <link rel="stylesheet" href="header_footer.css">
   <link rel="stylesheet" href="MainStyle.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <title>料理名・人数入力画面</title>
 </head>
 <body>
-<%@ include file="_header.jsp" %>
-<div id="main">
-  <form action="Main">
-    <input type="hidden" name="view" value="home">
-    <input class="Return" type="submit" name="calculate" value="＜ 戻る">
-  </form>
-  <h3 class="title">料理名・人数入力画面</h3>
-  <p>説明：~~~~~</p>
-  <hr>
-  <form action="CookInfo">
-    <fieldset>
-	  <h3><span id="right">分量を計算する</span></h3>
-	    <div id="right">
-	      <input type = "submit" name="calculate" value="計算する">
-	    </div>
-	  <hr>
-	  <% if (errMsg != "" || errMsg != null){
-		out.write(errMsg);
-	    }
-	  %>
+  <%@ include file="_header.jsp" %>
+  <div id="main">
+    <form action="Main">
+      <input type="hidden" name="view" value="home">
+      <input class="Return" type="submit" name="calculate" value="＜ 戻る">
+    </form>
+    <h3 class="title">料理名・人数入力画面</h3>
+    <p>説明：~~~~~</p>
+    <hr>
+    <form action="CookInfo">
+      <fieldset class="CookInfo-field">
+        <h3 class="float">分量を計算する</h3>
+          <div id="right">
+            <input class="next-btn" type="submit" name="calculate" value="計算する ＞">
+          </div>
+          <hr>
+          <% if (errMsg != "" || errMsg != null){
+        	  out.write(errMsg);
+             }
+          %>
 
-        <p>
-          <label for = "projectName">プロジェクト名</label>
-          <select name = "projectName">
+          <p>
+            <label for = "projectName">プロジェクト名</label>
+            <select name = "projectName">
             <% if(projectName == "" || projectName == null){
             	out.write("<option value=\"\" selected> </optin>");
             	} else {
@@ -55,26 +54,24 @@
             	}
             }
             %>
-          </select>
-        </p>
+            </select>
+          </p>
 
-	  <p>
-	    <label for="cookName">料理名</label>
-	    <% if (cookName.equals("") || cookName == null){
-        	   out.write("<h4></h4>");
+          <div class="parent-block">
+              <label for="cookName">料理名</label>
+            <% if (cookName.equals("") || cookName == null){
+        	   out.write("");
         	 } else {
-        	   out.write("<h4>" + cookName + "</h4>");
-        	   out.write("<input type=\"hidden\" name=\"cookName\" value=\"" + cookName + "\"");
-        	 }
-          %>
-        <input type="submit" name="search" value="料理を探す">
-	  </p>
+        	   out.write("<span>" + cookName + "</span>");
+        	   out.write("<input type=\"hidden\" name=\"cookName\" value=\"" + cookName + "\">");
+             }
+            %>
+              <input class="search-btn" type="submit" name="search" value="料理を探す ＞">
+          </div>
 
-      <p>
-	    <label for = "member">人数</label>
-	    <input type="number" name = "member"
-	      <% out.write("value=\"" + member + "\"");%>
-	    min="0">
+          <p>
+        <label for = "member">人数</label>
+        <% out.write("<input type=\"number\" name=\"member\" value=\"" + member + "\" min=\"0\">");%>
 	  </p>
 
     </fieldset>

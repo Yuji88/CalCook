@@ -1,37 +1,50 @@
 @charset "UTF-8";
 
-.maintitle{
+.maintitle {
 
 }
 
-.title{
-	position:   relative;
-	padding:    0.1em 0.5em;
-	font-size:  20px;
-	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
+.title {
+	/* 	position: relative;
+	padding: 0.1em 0.5em;
+	font-size: 20px;
+	background: -webkit-linear-gradient(to right, rgb(255, 186, 115),
+		transparent);
 	background: linear-gradient(to right, rgb(255, 186, 115), transparent);
-	color:      #545454;
-	margin:     0px;
+	color: #545454; */
+	padding: 0.2em 0.5em;
+	border-left: 6px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-color: #2b2b2b;
+	background: linear-gradient(to right, rgb(255, 230, 115), transparent);
+	margin: 0px;
 }
-.title-NoReturn{
-	position:   relative;
-	padding:    0.1em 0.5em;
+
+.title-NoReturn {
+	/* 	position: relative;
+	padding: 0.1em 0.5em;
 	margin-top: 30px;
-	font-size:  20px;
-	background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
-	background: linear-gradient(to right, rgb(255, 186, 115), transparent);
-	color:      #545454;
-}
+	font-size: 20px;
+	background: -webkit-linear-gradient(to right, rgb(255, 186, 115),
+		transparent);
+	background: linear-gradient(to right, rgb(255, 186, 115), transparent); */
+	padding: 0.2em 0.5em;
+	border-left: 6px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-color: #2b2b2b;
+	background: linear-gradient(to right, rgb(255, 230, 115), transparent);
+	color: #545454;}
 
 input.flat-btn {
-	border-style:none;
+	border-style: none;
 	display: inline-block;
 	padding: 0.3em 1em;
 	text-decoration: none;
-	color: #67c5ff;
+	color: #232323;
 	border: solid 2px #67c5ff;
 	border-radius: 3px;
-	transition: .4s;
+	float: left;
+	margin-right: 10px;
 }
 
 input.flat-btn:hover {
@@ -42,21 +55,117 @@ input.flat-btn:hover {
 	color: white;
 }
 
+input.search-btn {
+	border-style: none;
+	display: inline-block;
+	padding: 0.2em 1em;
+	text-decoration: none;
+	color: #232323;
+	border: solid 2px #67c5ff;
+	border-radius: 3px;
+	float: left;
+	margin-right: 10px;
+}
+
+input.search-btn:hover {
+	border-style: none;
+	padding: 0.2em 1em;
+	background: #67c5ff;
+	border: solid 2px #ffffff;
+	color: white;
+}
+input.next-btn {
+	border-style: none;
+	display: inline-block;
+	padding: 0.8em 1em;
+	text-decoration: none;
+	color: #ff6666;
+	border: solid 2px #ff6666;
+	border-radius: 3px;
+	font-size: 12px;
+	margin: 10px;
+}
+
+input.next-btn:hover {
+	border-style: none;
+	padding: 0.8em 1em;
+	background: #ff6666;
+	border: solid 2px #ffffff;
+	color: white;
+	margin: 10px;
+}
+
 input.Return {
 	margin: 20px 0px 10px 0px;
-	border-style:none;
+	border-style: none;
 	display: inline-block;
 	padding: 0.3em 1em;
 	text-decoration: none;
-	color: #67c5ff;
-	border: solid 2px #67c5ff;
+	color: #ffa347;
+	border: solid 2px #ffa347;
 	border-radius: 3px;
 }
 
 input.Return:hover {
 	border-style: none;
 	padding: 0.3em 1em;
-	background: #67c5ff;
+	background: #ffa347;
 	border: solid 2px #ffffff;
 	color: white;
+}
+
+.select-box {
+	padding: 0.5em 1em;
+	margin: 2em 0;
+	background: repeating-linear-gradient(-45deg, #fffacd, #fffacd 3px, #ffffe0 3px,
+		#ffffe0 7px);
+	border-radius: 8px;
+}
+
+.CookInfo-field{
+	padding: 0.5em 1em;
+	margin: 2em 0;
+	background: repeating-linear-gradient(-45deg, #fffacd, #fffacd 3px, #ffffe0 3px,
+		#ffffe0 7px);
+	border-radius: 8px;
+	border: solid 2px #000;
+}
+
+.float{
+	float: left;
+}
+
+label.float{
+	float: left;
+	margin-right: 5px;
+}
+
+h4.float-text{
+	float: left;
+	margin-right: 10px
+}
+
+.parent-block {
+	position: relative;
+}
+
+.parent-block input {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.parent-block span {
+	top: 50%;
+	font-size: 1em;
+	transform: translateY(-50%);
+	margin-left: 0px;
+	margin-right: 15px;
+	font-weight: bold;
+}
+
+.parent-block label {
+	margin-right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
 }

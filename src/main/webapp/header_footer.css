@@ -8,7 +8,7 @@
 	width: 100%; /* ヘッダーの横幅を指定する */
 	height: 35px; /* ヘッダーの高さを指定する */
 	padding: 10px; /* ヘッダーの余白を指定する(上下左右) */
-	background-color: #ffff00; /* ヘッダーの背景色を指定する */
+	background-color: #ffff33; /* ヘッダーの背景色を指定する */
 	color: #000000; /* フォントの色を指定する */
 	box-shadow: 0px 2px 4px gray;
 }
@@ -21,7 +21,7 @@
 	width: 100%; /* フッターの横幅を指定する */
 	height: 20px; /* フッターの高さを指定する */
 	padding: 10px; /* フッター内側の余白を指定する(上下左右) */
-	background-color: #ffff00; /* フッターの背景色を指定する */
+	background-color: #ffff33; /* フッターの背景色を指定する */
 	color: #ffffff; /* フッターのフォントの色を指定する */
 	border: solid 1.5px;
 	border-style: solid none none none;
