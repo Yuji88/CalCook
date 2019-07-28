@@ -1,271 +1,96 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <web-app>
-      
-  
-  <display-name>Archetype Created Web Application</display-name>
-      
-  
-  <filter>
-            
-    
-    <filter-name>ApplicationInsightsWebFilter</filter-name>
-            
-    
-    <filter-class>
+	<display-name>Archetype Created Web Application</display-name>
+	<filter>
+		<filter-name>ApplicationInsightsWebFilter</filter-name>
+		<filter-class>
 			com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter
 		</filter-class>
-          
-  
-  </filter>
-      
-  
-  <filter-mapping>
-            
-    
-    <filter-name>ApplicationInsightsWebFilter</filter-name>
-            
-    
-    <url-pattern>/*</url-pattern>
-          
-  
-  </filter-mapping>
-      
-  
-  <!-- This listener handles shutting down the TelemetryClient when an application/servlet
+	</filter>
+	<filter-mapping>
+		<filter-name>ApplicationInsightsWebFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- This listener handles shutting down the TelemetryClient when an application/servlet
 		is undeployed. -->
-      
-  
-  <listener>
-            
-    
-    <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
-          
-  
-  </listener>
-      
-  
-  <servlet>
-            
-    
-    <servlet-name>Main</servlet-name>
-            
-    
-    <display-name>MainServlet</display-name>
-            
-    
-    <description/>
-            
-    
-    <servlet-class>controller.Main</servlet-class>
-          
-  
-  </servlet>
-      
-  
-  <servlet>
-            
-    
-    <servlet-name>CookInfo</servlet-name>
-            
-    
-    <display-name>CookInfo</display-name>
-            
-    
-    <description/>
-            
-    
-    <servlet-class>controller.CookInfo</servlet-class>
-          
-  
-  </servlet>
-      
-  
-  <servlet>
-            
-    
-    <servlet-name>NewProject</servlet-name>
-            
-    
-    <display-name>NewProject</display-name>
-            
-    
-    <description/>
-            
-    
-    <servlet-class>controller.NewProject</servlet-class>
-          
-  
-  </servlet>
-      
-  
-  <servlet>
-            
-    
-    <servlet-name>CookSearch</servlet-name>
-            
-    
-    <display-name>CookSearch</display-name>
-            
-    
-    <description/>
-            
-    
-    <servlet-class>controller.CookSearch</servlet-class>
-          
-  
-  </servlet>
-      
-  
-  <servlet>
-            
-    
-    <servlet-name>ProjectCookReg</servlet-name>
-            
-    
-    <display-name>ProjectCookReg</display-name>
-            
-    
-    <description/>
-            
-    
-    <servlet-class>controller.ProjectCookReg</servlet-class>
-          
-  
-  </servlet>
-      
-  
-  <servlet>
-            
-    
-    <servlet-name>ProjectSearch</servlet-name>
-            
-    
-    <display-name>ProjectSearch</display-name>
-            
-    
-    <description/>
-            
-    
-    <servlet-class>controller.ProjectSearch</servlet-class>
-          
-  
-  </servlet>
-      
-  
-  <servlet>
-            
-    
-    <servlet-name>ProjectCookEdit</servlet-name>
-            
-    
-    <display-name>ProjectCookEdit</display-name>
-            
-    
-    <description/>
-            
-    
-    <servlet-class>controller.ProjectCookEdit</servlet-class>
-          
-  
-  </servlet>
-      
-  
-  <servlet-mapping>
-            
-    
-    <servlet-name>Main</servlet-name>
-            
-    
-    <url-pattern>/Main</url-pattern>
-          
-  
-  </servlet-mapping>
-      
-  
-  <servlet-mapping>
-            
-    
-    <servlet-name>CookInfo</servlet-name>
-            
-    
-    <url-pattern>/CookInfo</url-pattern>
-          
-  
-  </servlet-mapping>
-      
-  
-  <servlet-mapping>
-            
-    
-    <servlet-name>NewProject</servlet-name>
-            
-    
-    <url-pattern>/NewProject</url-pattern>
-          
-  
-  </servlet-mapping>
-      
-  
-  <servlet-mapping>
-            
-    
-    <servlet-name>CookSearch</servlet-name>
-            
-    
-    <url-pattern>/CookSearch</url-pattern>
-          
-  
-  </servlet-mapping>
-      
-  
-  <servlet-mapping>
-            
-    
-    <servlet-name>ProjectCookReg</servlet-name>
-            
-    
-    <url-pattern>/ProjectCookReg</url-pattern>
-          
-  
-  </servlet-mapping>
-      
-  
-  <servlet-mapping>
-            
-    
-    <servlet-name>ProjectSearch</servlet-name>
-            
-    
-    <url-pattern>/ProjectSearch</url-pattern>
-          
-  
-  </servlet-mapping>
-      
-  
-  <servlet-mapping>
-            
-    
-    <servlet-name>ProjectCookEdit</servlet-name>
-            
-    
-    <url-pattern>/ProjectCookEdit</url-pattern>
-          
-  
-  </servlet-mapping>
-      
-  
-  <welcome-file-list>
-            
-    
-    <welcome-file>TopMenu.jsp</welcome-file>
-            
-    
-    <!-- <welcome-file>index.html</welcome-file> <welcome-file>index.htm</welcome-file>
+	<listener>
+		<listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener
+		</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>Main</servlet-name>
+		<display-name>MainServlet</display-name>
+		<description />
+		<servlet-class>controller.Main</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CookInfo</servlet-name>
+		<display-name>CookInfo</display-name>
+		<description />
+		<servlet-class>controller.CookInfo</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>NewProject</servlet-name>
+		<display-name>NewProject</display-name>
+		<description />
+		<servlet-class>controller.NewProject</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CookSearch</servlet-name>
+		<display-name>CookSearch</display-name>
+		<description />
+		<servlet-class>controller.CookSearch</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ProjectCookReg</servlet-name>
+		<display-name>ProjectCookReg</display-name>
+		<description />
+		<servlet-class>controller.ProjectCookReg</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ProjectSearch</servlet-name>
+		<display-name>ProjectSearch</display-name>
+		<description />
+		<servlet-class>controller.ProjectSearch</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ProjectCookEdit</servlet-name>
+		<display-name>ProjectCookEdit</display-name>
+		<description />
+		<servlet-class>controller.ProjectCookEdit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Main</servlet-name>
+		<url-pattern>/Main</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CookInfo</servlet-name>
+		<url-pattern>/CookInfo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>NewProject</servlet-name>
+		<url-pattern>/NewProject</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CookSearch</servlet-name>
+		<url-pattern>/CookSearch</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProjectCookReg</servlet-name>
+		<url-pattern>/ProjectCookReg</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProjectSearch</servlet-name>
+		<url-pattern>/ProjectSearch</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ProjectCookEdit</servlet-name>
+		<url-pattern>/ProjectCookEdit</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>TopMenu.jsp</welcome-file>
+		<!-- <welcome-file>index.html</welcome-file> <welcome-file>index.htm</welcome-file>
 			<welcome-file>index.jsp</welcome-file> <welcome-file>default.html</welcome-file>
 			<welcome-file>default.htm</welcome-file> <welcome-file>default.jsp</welcome-file> -->
-          
-  
-  </welcome-file-list>
-    
-
+	</welcome-file-list>
 </web-app>

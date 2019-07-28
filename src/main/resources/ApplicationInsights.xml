@@ -1,87 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-        
-  
-  
-  <InstrumentationKey>7c0b2408-ef6c-4a16-b7c5-600cc070ad9f</InstrumentationKey>
-        
-  
-  
-  <ContextInitializers>
-  </ContextInitializers>
-        
-  
-  
-  <TelemetryInitializers>
-                
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
-                
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
-            	
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
-            	
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
-            	
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
-              
-  
-  
-  </TelemetryInitializers>
-        
-  
-  
-  <TelemetryModules>
-                
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
-                
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
-                
-    
-    
-    <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
-            	
-  
-  
-  
-  </TelemetryModules>
-        
-  
-  
-  <Channel>
-                
-    
-    
-    <!-- 
-      Setting DeveloperMode to true will enable immediate transmission of the telemetry events, which can be helpful during the development process.
-      Make sure to turn this off on production servers due to performance considerations.
-    -->
-                
-    
-    
-    <DeveloperMode>false</DeveloperMode>
-              
-  
-  
-  </Channel>
-        
-  
-  
-  <DisableTelemetry>false</DisableTelemetry>
-      
+<?xml version="1.0" encoding="utf-8"?>
+    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
+      <!-- ポータルからのインストルメンテーション キー: -->
+      <!-- <InstrumentationKey>7c0b2408-ef6c-4a16-b7c5-600cc070ad9f</InstrumentationKey> -->
+      <InstrumentationKey>4814c3f4-55ca-4f80-b309-ba4aed75e7f8</InstrumentationKey>
 
-</ApplicationInsights>
+      <!-- HTTP リクエスト コンポーネント (bare APIには不要) -->
+      <TelemetryModules>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+      </TelemetryModules>
+
+      <!-- イベント相関 (bare APIには不要) -->
+      <!-- これらの初期化子は、各イベントにコンテキストデータを追加します -->
+
+      <TelemetryInitializers>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+
+      </TelemetryInitializers>
+    </ApplicationInsights>
