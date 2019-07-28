@@ -19,7 +19,7 @@
 
   <h4><%= dataMsg %></h4>
 
-  <form action = "Main">
+  <form method="post" action = "Main">
     <input type = "hidden" name = "view" value = "home">
     <input type = "submit" value = "Homeに戻る">
   </form>

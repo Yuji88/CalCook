@@ -22,14 +22,14 @@
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
-  <form action="CookSearch">
+  <form method="post" action="CookSearch">
     <% out.write("<input type=\"hidden\" name=\"cookName\" value=\"" + cookName + "\">"); %>
     <input class="Return" type="submit" name="decision" value="＜ 戻る">
   </form>
   <h3 class="title">分量計算画面</h3>
   <p>説明：~~~~~</p>
   <hr>
-  <form action="ProjectCookReg">
+  <form method="post" action="ProjectCookReg">
   <h4>プロジェクト名:<% out.print(projectName);%></h4>
   <h4>料理名:<% out.print(cookName);%></h4>
   <h4>人数:<% out.print(member);%></h4>

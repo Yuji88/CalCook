@@ -24,7 +24,7 @@
 		out.write(errMsg);
 	    }
 	  %>
-  <form action = "NewProject">
+  <form method="post" action = "NewProject">
     <label for="projectname">*プロジェクト名：</label>
     <input type="text" name="projectname"><br>
 

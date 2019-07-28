@@ -20,14 +20,14 @@
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
-  <form action="Main">
+  <form method="post" action="Main">
     <input type="hidden" name="view" value="home">
     <input class="Return" type="submit" name="calculate" value="＜ 戻る">
   </form>
   <h3 class="title">プロジェクト一覧画面</h3>
   <p>説明：~~~~~</p>
   <hr>
-  <form action="ProjectSearch">
+  <form method="post" action="ProjectSearch">
   <input type="hidden" name="view" value="search">
     <label for="cookName">PJから探す</label>
     <input type="text" name="projectName"
@@ -45,7 +45,7 @@
     <input type="submit" name="search" value="検索">
   </form>
 
-  <form action="ProjectSearch">
+  <form method="post" action="ProjectSearch">
   <input type="hidden" name="view" value="decision">
   <hr>
 			<table>

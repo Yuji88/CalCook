@@ -22,7 +22,7 @@
     <p>以下の内容で登録してよろしいですか？</p>
     <hr>
 
-	<form action="NewProject">
+	<form method="post" action="NewProject">
     <p>プロジェクト名：
     <% out.write(projectname);%></p>
 

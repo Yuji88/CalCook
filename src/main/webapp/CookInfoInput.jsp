@@ -20,14 +20,14 @@
 <body>
   <%@ include file="_header.jsp" %>
   <div id="main">
-    <form action="Main">
+    <form method="post" action="Main">
       <input type="hidden" name="view" value="home">
       <input class="Return" type="submit" name="calculate" value="＜ 戻る">
     </form>
     <h3 class="title">料理名・人数入力画面</h3>
     <p>説明：~~~~~</p>
     <hr>
-    <form action="CookInfo">
+    <form method="post" action="CookInfo">
       <fieldset class="CookInfo-field">
         <h3 class="float">分量を計算する</h3>
           <div id="right">

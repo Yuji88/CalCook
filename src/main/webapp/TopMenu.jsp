@@ -17,21 +17,21 @@
   <h1 class="maintitle">Welcome to CalCook!</h1>
 
   <div class="select-box">
-    <form action="Main">
+    <form method="post" action="Main">
       <input type="hidden" name="view" value="CookInfoInput">
       <input class="flat-btn" type="submit" value="作業する">  <p>説明：~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
     </form>
   </div>
 
   <div class="select-box">
-    <form action="Main">
+    <form method="post" action="Main">
       <input type="hidden" name="view" value="Confirm">
       <input class="flat-btn" type="submit" value="確認する">  <p>説明：~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
     </form>
   </div>
 
   <hr>
-  <form action="Main">
+  <form method="post" action="Main">
     <input type="hidden" name="view" value="NewProject">
     <input class="flat-btn" type = "submit"  value = "プロジェクトを登録する">
   </form>

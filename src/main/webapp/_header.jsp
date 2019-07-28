@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <div id="header">
-	<form action="Main">
+	<form method="post" action="Main">
 		<input type="hidden" name="view" value="home">
 		<input type="submit" value="CalCook" class="calcook">
 	</form>

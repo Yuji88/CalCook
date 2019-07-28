@@ -21,12 +21,12 @@
 <body>
 <%@ include file="_header.jsp" %>
 <div id="main">
-  <form action="CookSearch">
+  <form method="post" action="CookSearch">
     <input class="Return" type="submit" name="decision" value="＜ 戻る">
   </form>
   <h3 class="title">料理検索画面</h3>
   <p>説明：~~~~~</p>
-  <form action="CookSearch">
+  <form method="post" action="CookSearch">
 
   <label for="cookName">料理名</label>
   <input type="text" name="cookName"
@@ -43,7 +43,7 @@
   <input type="submit" name="search" value="検索">
   </form>
 
-  <form action="CookSearch">
+  <form method="post" action="CookSearch">
   <hr>
 			<table>
 				<tr>

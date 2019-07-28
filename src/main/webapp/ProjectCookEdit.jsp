@@ -25,7 +25,7 @@
 <body>
   <%@ include file="_header.jsp"%>
   <div id="main">
-    <form action="Main">
+    <form method="post" action="Main">
       <input type = "hidden" name = "view" value = "Confirm">
       <input class="Return" type="submit" name="calculate" value="＜ 一覧に戻る">
     </form>
@@ -83,7 +83,7 @@
 		%>
 		<%
 			for (int i = 0; i < menuInfoList.size(); i++) {
-				out.write("<form action=\"ProjectCookEdit\">");
+				out.write("<form method=\"post\" action=\"ProjectCookEdit\">");
 				out.write("<input type=\"hidden\" name=\"view\" value=\"reveiw\">");
 
 				if(dispMenuid == menuInfoList.get(i).getMenuid()){
