@@ -1,5 +1,6 @@
 /************************************/
 /* ProjectCookDetail.jsp			*/
+/* ProjectCookEdit.jsp				*/
 /* プロジェクトメニュー読み込み切り替え	*/
 /** ********************************* */
 function menuEntryChange(cnt) {

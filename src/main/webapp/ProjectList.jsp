@@ -60,11 +60,11 @@
 					if (projectList != null || projectList.size() == 0) {
 						for (int i = 0; i < projectList.size(); i++) {
 							out.write("<tr>");
-							out.write("<td>" + (i + 1) + "</td>");
-							out.write("<td>" + projectList.get(i).getProjectname() + "</td>");
-							out.write("<td>" + projectList.get(i).getStartdate() + " 〜 " + projectList.get(i).getEnddate() + "</td>");
-							out.write("<td>" + projectList.get(i).getMember() + "</td>");
-							out.write("<td><input type=\"radio\" name=\"projectid\" value=\""
+							out.write("<td><label for=\"project" + i + "\">" + (i + 1) + "</label></td>");
+							out.write("<td><label for=\"project" + i + "\">" + projectList.get(i).getProjectname() + "</label></td>");
+							out.write("<td><label for=\"project" + i + "\">" + projectList.get(i).getStartdate() + " 〜 " + projectList.get(i).getEnddate() + "</label></td>");
+							out.write("<td><label for=\"project" + i + "\">" + projectList.get(i).getMember() + "</label></td>");
+							out.write("<td><input id=\"project" + i + "\" type=\"radio\" name=\"projectid\" value=\""
 									+ projectList.get(i).getProjectid() + "\"></td>");
 							out.write("</tr>");
 						}
