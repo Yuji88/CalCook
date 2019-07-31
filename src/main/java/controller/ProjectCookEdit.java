@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.ProjectCookDisp;
-import dto.ProjectInfo;
 import dto.ProjectMenuInfo;
 import model.ProjectMenuData;
 import model.ProjectMenuHistoryData;
@@ -39,7 +38,6 @@ public class ProjectCookEdit extends HttpServlet {
 		// 画面遷移判断用変数
 		String view = request.getParameter("view");
 		// セッション情報取得
-		ProjectInfo projectInfo = (ProjectInfo) session.getAttribute("projectInfo");
 		ArrayList<ProjectCookDisp> projectCookDispList =
 				(ArrayList<ProjectCookDisp>) session.getAttribute("projectCookDispList");
 		String errMsg = "";
@@ -81,6 +79,11 @@ public class ProjectCookEdit extends HttpServlet {
 			request.setAttribute("errMsg", errMsg);
 
 			request.getRequestDispatcher("ProjectCookEdit.jsp").forward(request, response);
+			return;
+
+		} else if(view.equals("Purchase")){
+			request.setAttribute("errMsg", errMsg);
+			request.getRequestDispatcher("PurchaseOrderEdit.jsp").forward(request, response);
 			return;
 
 		} else if (recalculation != null) {
